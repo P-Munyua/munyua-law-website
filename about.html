@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Munyua N Law Advocates</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; margin-bottom: 64px; }
+.about-body p { font-size: 15.5px; color: var(--muted); line-height: 1.85; margin-bottom: 18px; }
+.about-img-wrap img { width: 100%; display: block; border-top: 4px solid var(--gold); }
+.about-img-caption { background: var(--teal); padding: 16px 20px; font-size: 13px; color: rgba(255,255,255,.7); }
+.pillars-section { background: var(--teal); padding: 56px 48px; margin: 0; }
+.pillars-inner { max-width: 1200px; margin: 0 auto; }
+.pillars-inner .section-title { color: var(--white); margin-bottom: 40px; }
+.pillars-inner .section-eyebrow { color: var(--gold); }
+.pillars-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: rgba(255,255,255,.1); }
+.pillar-card { background: rgba(255,255,255,.04); padding: 32px 24px; text-align: center; }
+.pillar-num { font-family: 'Libre Baskerville', serif; font-size: 36px; font-weight: 400; color: var(--gold); opacity: .35; line-height: 1; margin-bottom: 16px; }
+.pillar-name { font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--white); margin-bottom: 10px; }
+.pillar-desc { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.65; }
+.approach-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 8px; }
+.approach-card { border-left: 3px solid var(--gold); padding: 18px 20px; background: var(--off-white); }
+.approach-card-title { font-size: 13px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
+.approach-card p { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+@media (max-width: 900px) {
+  .about-layout { grid-template-columns: 1fr; gap: 36px; }
+  .pillars-section { padding: 48px 20px; }
+  .pillars-grid { grid-template-columns: 1fr 1fr; }
+  .approach-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="page-hero">
+  <img class="page-hero-img" src="Esther.jpeg" alt="">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">About the Firm</div>
+    <h1>Munyua N Law <em>Advocates</em></h1>
+  </div>
+</div>
+
+<div class="sub-nav">
+  <div class="sub-nav-inner">
+    <a href="about.html" class="active">About the Firm</a>
+    <a href="people.html">Managing Partner</a>
+    <a href="expertise.html">Practice Areas</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="page-body">
+  <div class="about-layout">
+    <div class="about-body">
+      <div class="section-eyebrow">Who We Are</div>
+      <h2 class="section-title">A firm built on<br><em>precision and foresight</em></h2>
+      <p>Munyua N Law Advocates is a Nairobi-based law firm providing high-level legal representation and strategic counsel to individuals, startups, and established enterprises across Kenya and the region.</p>
+      <p>We believe that legal counsel should be as dynamic as the clients we serve. Our practice is built on the pillars of Professionalism, Competence, Integrity, and Efficiency — anchored by a commitment to Proactive Communication.</p>
+      <p>We combine deep-rooted legal expertise with a practical understanding of both corporate objectives and private personal matters. Our multidisciplinary approach ensures that whether you are an individual seeking private counsel, a scaling startup, or an established enterprise, your legal interests are protected with precision and foresight.</p>
+      <p>We understand that clarity is peace of mind. We take pride in keeping our clients consistently informed, providing regular updates and clear correspondence at every stage of the legal process.</p>
+    </div>
+    <div>
+      <div class="about-img-wrap">
+        <img src="Esther.jpeg" alt="Munyua N Law Advocates Office">
+        <div class="about-img-caption">Esther N. Munyua — Founder &amp; Managing Partner · Westlands, Nairobi</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="margin-bottom:48px">
+    <div class="section-eyebrow">Our Approach</div>
+    <h2 class="section-title">Strategic partnership,<br><em>not just legal advice</em></h2>
+    <div class="approach-grid">
+      <div class="approach-card">
+        <div class="approach-card-title">Preventative, Not Reactive</div>
+        <p>We design systems and structures that proactively reduce disputes, regulatory exposure, and legal risk — before they materialise.</p>
+      </div>
+      <div class="approach-card">
+        <div class="approach-card-title">Litigation-Informed Advisory</div>
+        <p>Our courtroom experience shapes every advisory engagement. We structure solutions today that are built to withstand tomorrow's legal challenges.</p>
+      </div>
+      <div class="approach-card">
+        <div class="approach-card-title">Business-Centric Thinking</div>
+        <p>Every legal recommendation is aligned with your operational and commercial goals. We speak business as fluently as we speak law.</p>
+      </div>
+      <div class="approach-card">
+        <div class="approach-card-title">Transparent Partnership</div>
+        <p>We prioritise frequent correspondence and proactive communication, ensuring clients are consistently updated and informed at every stage.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PILLARS BAND -->
+<div class="pillars-section">
+  <div class="pillars-inner">
+    <div class="section-eyebrow">Our Core Values</div>
+    <h2 class="section-title">The pillars that define<br><em>everything we do</em></h2>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <div class="pillar-name">Professionalism</div>
+        <div class="pillar-desc">Maintaining the highest standards of conduct in every client interaction and legal matter.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <div class="pillar-name">Competence</div>
+        <div class="pillar-desc">Deep technical expertise across every practice area, continuously developed and refined.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <div class="pillar-name">Integrity</div>
+        <div class="pillar-desc">Honest, ethical, and transparent in every aspect of our work and client relationships.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">04</div>
+        <div class="pillar-name">Efficiency</div>
+        <div class="pillar-desc">Delivering timely, decisive legal work that respects our clients' time and resources.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">05</div>
+        <div class="pillar-name">Proactive Communication</div>
+        <div class="pillar-desc">Regular updates and clear correspondence — so you always know where your matter stands.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Ready to work with a firm that is <strong>invested in your success?</strong></h2>
+    <div class="cta-band-actions">
+      <a href="contact.html" class="btn-gold">Book a Consultation</a>
+      <a href="expertise.html" class="btn-ghost">Our Practice Areas</a>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="shared.js"></script>
+<script>renderNav('about');</script>
+</body>
+</html>

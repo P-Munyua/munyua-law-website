@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Munyua N Law Advocates</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --teal:       #0d4a4a;
+  --teal-dark:  #082e2e;
+  --teal-hover: #1a6060;
+  --gold:       #c9a84c;
+  --gold-dark:  #a07830;
+  --white:      #ffffff;
+  --off-white:  #f7f7f5;
+  --light-gray: #f0efec;
+  --mid-gray:   #e2e0db;
+  --text:       #1a1a1a;
+  --muted:      #555550;
+  --border:     #d8d6d0;
+  --nav-h:      64px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ── TOP UTILITY BAR ─────────────────────────── */
+.util-bar {
+  background: var(--teal-dark);
+  padding: 0 48px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0;
+  height: 36px;
+  font-size: 12px;
+}
+.util-bar a {
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  padding: 0 16px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid rgba(255,255,255,0.1);
+  transition: color .2s;
+  letter-spacing: .04em;
+}
+.util-bar a:hover { color: var(--gold); }
+
+/* ── MAIN NAV ─────────────────────────────────── */
+nav {
+  background: var(--white);
+  height: var(--nav-h);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 48px;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo img { height: 140px; width: 140px; object-fit: contain; }
+.nav-logo-text {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--teal);
+  line-height: 1.25;
+  letter-spacing: .01em;
+}
+.nav-logo-text span {
+  display: block;
+  font-size: 10px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 400;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+
+.nav-menu { display: flex; align-items: center; height: var(--nav-h); list-style: none; }
+.nav-menu > li { position: relative; height: 100%; }
+.nav-menu > li > a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 18px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: .03em;
+  gap: 4px;
+  border-bottom: 3px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.nav-menu > li > a:hover,
+.nav-menu > li > a.active { color: var(--teal); border-bottom-color: var(--gold); }
+
+.chev { font-size: 9px; margin-top: 1px; }
+
+.nav-menu > li:hover .mega { display: block; }
+.mega {
+  display: none;
+  position: absolute;
+  top: var(--nav-h);
+  left: 0;
+  min-width: 240px;
+  background: var(--white);
+  border-top: 3px solid var(--gold);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  box-shadow: 0 8px 32px rgba(0,0,0,.12);
+  z-index: 300;
+}
+.mega a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: background .15s, color .15s;
+}
+.mega a:last-child { border-bottom: none; }
+.mega a:hover { background: var(--off-white); color: var(--teal); }
+
+.nav-cta {
+  margin-left: 16px;
+  padding: 9px 20px !important;
+  height: auto !important;
+  background: var(--teal) !important;
+  color: var(--white) !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: .07em !important;
+  text-transform: uppercase;
+  border-bottom: none !important;
+  text-decoration: none;
+  display: inline-flex !important;
+  align-items: center;
+  cursor: pointer;
+  transition: background .2s !important;
+}
+.nav-cta:hover { background: var(--teal-hover) !important; }
+
+/* ── HERO BANNER ANIMATIONS ─────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInImage {
+  from {
+    transform: scale(1.1) translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutImage {
+  from {
+    transform: scale(1) translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.05) translateX(-50px);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ── HERO BANNER ─────────────────────────────── */
+.hero-banner {
+  background: var(--teal);
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Carousel Container */
+.carousel-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  animation: slideInImage 2s ease-out;
+}
+
+.carousel-slide.exit {
+  animation: slideOutImage 2s ease-out;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  filter: grayscale(25%);
+}
+
+.hero-banner-bg {
+  position: absolute; 
+  inset: 0;
+  background: linear-gradient(to right, rgba(8,46,46,.93) 45%, rgba(8,46,46,.55) 100%);
+  z-index: 1;
+  animation: pulse 8s ease-in-out infinite;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 12px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.dot.active {
+  background: var(--gold);
+  width: 16px;
+  border-color: rgba(255,255,255,0.8);
+}
+
+.hero-banner-content {
+  position: relative; 
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 64px 48px 52px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 56px;
+  align-items: end;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.hero-banner h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.18;
+  margin-bottom: 18px;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.hero-banner h1 em { 
+  font-style: italic; 
+  color: var(--gold); 
+}
+
+.hero-banner-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,.72);
+  max-width: 540px;
+  line-height: 1.75;
+  margin-bottom: 30px;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.hero-actions { 
+  display: flex; 
+  gap: 14px; 
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+.btn-gold {
+  padding: 12px 26px;
+  background: var(--gold);
+  color: var(--teal-dark);
+  font-weight: 600;
+  font-size: 12.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-gold:hover { 
+  background: var(--gold-dark); 
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-ghost {
+  padding: 11px 26px;
+  border: 1px solid rgba(255,255,255,.4);
+  color: rgba(255,255,255,.85);
+  font-size: 12.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-ghost:hover { 
+  border-color: var(--gold); 
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.hero-attorney-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(201,168,76,.35);
+  padding: 20px;
+  animation: fadeInScale 0.8s ease-out 0.4s both;
+}
+
+.hero-attorney-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  margin-bottom: 14px;
+  border: 2px solid var(--gold);
+}
+
+.hero-attorney-name {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 16px;
+  color: var(--white);
+  margin-bottom: 3px;
+}
+
+.hero-attorney-title {
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── SUB NAV ─────────────────────────────────── */
+.sub-nav { background: var(--teal-dark); border-bottom: 1px solid rgba(255,255,255,.08); }
+.sub-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+}
+.sub-nav a {
+  display: block;
+  padding: 14px 20px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .07em;
+  color: rgba(255,255,255,.6);
+  text-decoration: none;
+  text-transform: uppercase;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  transition: color .2s, border-color .2s;
+}
+.sub-nav a:hover { color: var(--white); }
+.sub-nav a.active { color: var(--white); border-bottom-color: var(--gold); }
+
+/* ── EXPERTISE ───────────────────────────────── */
+.expertise-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 48px 64px;
+}
+
+.expertise-tagline {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(22px, 2.8vw, 34px);
+  font-weight: 400;
+  color: var(--teal);
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 40px;
+}
+
+.toggle-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+.toggle-all-btn {
+  background: none; border: none;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 13px;
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer; padding: 0;
+}
+.toggle-all-btn:hover { color: var(--gold-dark); }
+
+.practices-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 52px;
+  padding-top: 28px;
+}
+
+.practice-group { margin-bottom: 24px; }
+
+.practice-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--teal);
+  user-select: none;
+}
+.practice-group-header:hover .pg-name { color: var(--gold-dark); }
+
+.pg-name {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--teal);
+  line-height: 1.3;
+  transition: color .2s;
+}
+.pg-icon {
+  color: var(--teal);
+  font-size: 20px;
+  line-height: 1;
+  transition: transform .25s;
+  flex-shrink: 0;
+  font-weight: 300;
+  margin-top: 1px;
+}
+.practice-group.open .pg-icon { transform: rotate(45deg); }
+
+.practice-sub-list { display: none; padding: 10px 0 4px; list-style: none; }
+.practice-group.open .practice-sub-list { display: block; }
+
+.practice-sub-list li a {
+  display: block;
+  font-size: 13.5px;
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(13,74,74,.4);
+  padding: 5px 0;
+  transition: color .15s, text-decoration-color .15s;
+}
+.practice-sub-list li a:hover { color: var(--gold-dark); text-decoration-color: var(--gold-dark); }
+
+/* ── DIVIDER ─────────────────────────────────── */
+.full-divider { height: 1px; background: var(--mid-gray); }
+
+/* ── ABOUT ───────────────────────────────────── */
+.about-section { background: var(--off-white); }
+
+.about-banner {
+  background: var(--teal);
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+}
+.about-banner-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(8,46,46,.94) 40%, rgba(8,46,46,.6) 100%);
+  z-index: 1;
+}
+.about-banner-bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  z-index: 0;
+  filter: grayscale(20%);
+}
+.about-banner-inner {
+  position: relative; z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 44px 48px;
+  width: 100%;
+}
+.about-banner-inner .section-eyebrow {
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.about-banner-inner h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.about-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 48px;
+  display: grid;
+  grid-template-columns: 288px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.attorney-photo-col { position: sticky; top: 80px; }
+.attorney-photo-col img {
+  width: 100%;
+  display: block;
+  border-top: 4px solid var(--gold);
+}
+.attorney-meta {
+  background: var(--teal);
+  padding: 20px 22px;
+}
+.attorney-meta-name {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+.attorney-meta-title {
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.attorney-cred {
+  font-size: 12.5px;
+  color: rgba(255,255,255,.72);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  line-height: 1.4;
+}
+.attorney-cred:last-child { border-bottom: none; }
+.attorney-cred::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+
+.attorney-bio-col h4 {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 6px;
+  margin-top: 32px;
+}
+.attorney-bio-col h4:first-child { margin-top: 0; }
+.attorney-bio-col h3 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--teal);
+  margin-bottom: 22px;
+  line-height: 1.25;
+}
+.attorney-bio-col p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.focus-area {
+  border-left: 3px solid var(--gold);
+  padding: 13px 18px;
+  background: var(--white);
+  margin-bottom: 10px;
+}
+.focus-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal);
+  letter-spacing: .04em;
+  margin-bottom: 4px;
+}
+.focus-text { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+
+/* ── CONTACT ─────────────────────────────────── */
+.contact-section { background: var(--white); }
+
+.contact-banner {
+  background: var(--teal);
+  padding: 52px 48px;
+}
+.contact-banner-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.contact-banner h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(20px, 2.8vw, 34px);
+  font-weight: 400;
+  color: var(--white);
+  font-style: italic;
+}
+.contact-banner h2 strong { font-style: normal; color: var(--gold); font-weight: 700; }
+
+.contact-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 64px;
+}
+
+.contact-info-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--teal);
+  margin-bottom: 24px;
+}
+
+.contact-detail-list { list-style: none; }
+.contact-item {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border);
+}
+.contact-item:first-child { border-top: 1px solid var(--border); }
+.ci-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--teal);
+  min-width: 78px;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+.ci-value { font-size: 14.5px; color: var(--muted); line-height: 1.55; }
+.ci-value a { color: var(--teal); text-decoration: underline; text-underline-offset: 2px; }
+
+.pillars-box {
+  margin-top: 32px;
+  padding: 20px 22px;
+  background: var(--off-white);
+  border-left: 3px solid var(--gold);
+}
+.pillars-box-label {
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.pillars-box-items { font-size: 13.5px; color: var(--muted); line-height: 2.1; }
+
+.contact-form-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 22px;
+  color: var(--teal);
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
+.form-group label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 14.5px;
+  color: var(--text);
+  padding: 10px 13px;
+  border: 1px solid var(--border);
+  outline: none;
+  background: var(--white);
+  transition: border-color .2s;
+  border-radius: 0;
+  width: 100%;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--teal); }
+.form-group textarea { min-height: 112px; resize: vertical; }
+.form-submit {
+  padding: 13px 32px;
+  background: var(--teal);
+  color: var(--white);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background .2s;
+}
+.form-submit:hover { background: var(--teal-hover); }
+
+/* ── FOOTER ──────────────────────────────────── */
+footer { background: var(--teal-dark); }
+.footer-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 52px 48px 36px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  gap: 44px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.footer-brand img { height: 52px; width: 52px; object-fit: contain; margin-bottom: 14px; display: block; }
+.footer-brand-name {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 15px;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.footer-brand-sub {
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 16px;
+}
+.footer-brand-addr { font-size: 12.5px; color: rgba(255,255,255,.45); line-height: 1.75; }
+
+.footer-col h5 {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(201,168,76,.2);
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 8px; }
+.footer-col ul li a {
+  font-size: 13px;
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer-col ul li a:hover { color: var(--gold); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: rgba(255,255,255,.32);
+}
+.footer-bottom a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .2s; }
+.footer-bottom a:hover { color: var(--gold); }
+.footer-bottom-links { display: flex; gap: 20px; }
+
+/* ── WHATSAPP FLOAT ──────────────────────────── */
+.wa-btn {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,.25);
+  z-index: 999;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.wa-btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(0,0,0,.3); }
+.wa-btn svg { width: 28px; height: 28px; fill: #fff; }
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media (max-width: 960px) {
+  .util-bar, nav, .contact-banner, .footer-bottom { padding-left: 20px; padding-right: 20px; }
+  .hero-banner-content { grid-template-columns: 1fr; padding: 48px 20px; }
+  .hero-attorney-card { display: none; }
+  .sub-nav-inner { padding: 0 20px; }
+  .expertise-section { padding: 44px 20px; }
+  .practices-grid { grid-template-columns: 1fr; gap: 0; }
+  .about-body { grid-template-columns: 1fr; padding: 40px 20px; }
+  .attorney-photo-col { position: static; max-width: 320px; }
+  .contact-body { grid-template-columns: 1fr; padding: 40px 20px; }
+  .footer-top { grid-template-columns: 1fr 1fr; padding: 40px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .nav-menu { display: none; }
+  .full-divider { display: none; }
+  .about-banner-inner { padding: 40px 20px; }
+  .carousel-dots { bottom: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP UTILITY BAR -->
+<div class="util-bar">
+  <a href="tel:+254725465278">+254 725 465 278</a>
+  <a href="mailto:munyuanlawadvocates@gmail.com">munyuanlawadvocates@gmail.com</a>
+  <a href="contact.html">Client Enquiry</a>
+</div>
+
+<!-- MAIN NAV -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo2.png" alt="Munyua N Law Advocates Logo">  <br>
+    <br>
+    <br>
+    <div class="nav-logo-text">
+      Munyua N Law
+      <span>Advocates</span>
+    </div>
+  </a>
+
+  <ul class="nav-menu">
+    <li>
+      <a href="index.html">About <span class="chev">▾</span></a>
+      <div class="mega">
+        <a href="about.html">Our Firm</a>
+        <a href="about.html">Managing Partner</a>
+        <a href="about.html">Our Philosophy</a>
+      </div>
+    </li>
+    <li>
+      <a href="about.html">People</a>
+    </li>
+    <li>
+      <a href="expertise.html">Expertise <span class="chev">▾</span></a>
+      <div class="mega">
+        <a href="expertise.html">All Practice Areas</a>
+        <a href="expertise.html">Litigation &amp; Dispute Resolution</a>
+        <a href="expertise.html">Corporate &amp; Commercial Law</a>
+        <a href="expertise.html">Conveyancing &amp; Real Estate</a>
+        <a href="expertise.html">Employment &amp; Labour</a>
+        <a href="expertise.html">Intellectual Property</a>
+        <a href="expertise.html">Data Protection &amp; Privacy</a>
+        <a href="expertise.html">Technology Law</a>
+        <a href="expertise.html">Public Procurement</a>
+        <a href="expertise.html">Environment &amp; Land</a>
+      </div>
+    </li>
+    <li><a href="contact.html">Insights</a></li>
+    <li>
+      <a href="contact.html">Contact <span class="chev">▾</span></a>
+      <div class="mega">
+        <a href="contact.html">Send a Message</a>
+        <a href="https://wa.me/254725465278" target="_blank">WhatsApp</a>
+        <a href="contact.html">Our Office</a>
+      </div>
+    </li>
+    <li>
+      <a href="contact.html" class="nav-cta">Book a Consultation</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- HERO BANNER WITH CAROUSEL -->
+<div id="home" class="hero-banner">
+  <!-- Carousel Container -->
+  <div class="carousel-container">
+    <div class="carousel-slide active">
+      <img class="carousel-image" src="law4.jpeg" alt="Professional Legal Services - Law Firm">
+    </div>
+    <div class="carousel-slide">
+      <img class="carousel-image" src="law-legal-justice.jpeg" alt="Modern Law Office Interior">
+    </div>
+    <div class="carousel-slide">
+      <img class="carousel-image" src="law.jpeg" alt="Law Team Meeting">
+    </div>
+  </div>
+
+  <div class="hero-banner-bg"></div>
+
+  <!-- Carousel Dots Navigation -->
+  <div class="carousel-dots">
+    <span class="dot active" onclick="currentSlide(0)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+  </div>
+
+  <!-- Hero Content -->
+  <div class="hero-banner-content">
+    <div>
+      <div class="hero-eyebrow">Advocates of the High Court of Kenya</div>
+      <h1>Legal Counsel as <em>Dynamic</em><br>as the Clients We Serve</h1>
+      <p class="hero-banner-desc">At Munyua N Law Advocates, we combine deep-rooted legal expertise with a practical understanding of corporate objectives and private personal matters — protecting your interests with precision and foresight.</p>
+      <div class="hero-actions">
+        <a href="contact.html" class="btn-gold">Book a Consultation</a>
+        <a href="expertise.html" class="btn-ghost">Our Practice Areas</a>
+      </div>
+    </div>
+    <div class="hero-attorney-card">
+      <img src="lawyer.png" alt="Esther N. Munyua — Managing Partner">
+      <div class="hero-attorney-name">Esther N. Munyua</div>
+      <div class="hero-attorney-title">Founder &amp; Managing Partner</div>
+    </div>
+  </div>
+</div>
+
+<!-- SUB NAV -->
+<div class="sub-nav">
+  <div class="sub-nav-inner">
+    <a href="expertise.html" class="active">All Practice Areas</a>
+    <a href="expertise.html">Litigation &amp; Disputes</a>
+    <a href="expertise.html">Corporate &amp; Commercial</a>
+    <a href="expertise.html">Property &amp; Land</a>
+    <a href="expertise.html">Employment</a>
+    <a href="expertise.html">Tech &amp; Digital</a>
+    <a href="contact.html">Insights</a>
+  </div>
+</div>
+
+<!-- EXPERTISE / PRACTICE AREAS -->
+<div id="expertise">
+  <div class="expertise-section">
+    <p class="expertise-tagline">The expertise you need, when and where you need it.</p>
+
+    <div class="toggle-bar">
+      <button class="toggle-all-btn" id="toggleAllBtn" onclick="toggleAll()">Expand all</button>
+    </div>
+
+    <div class="practices-grid">
+
+      <!-- Column 1 -->
+      <div>
+        <div class="practice-group" onclick="toggleGroup(this)">
+          <div class="practice-group-header">
+            <span class="pg-name">Litigation &amp; Dispute Resolution</span>
+            <span class="pg-icon">+</span>
+          </div>
+          <ul class="practice-sub-list">
+            <li><a href="contact.html">Arbitration</a></li>
+            <li><a href="contact.html">Mediation</a></li>
+            <li><a href="contact.html">Commercial Litigation</a></li>
+            <li><a href="contact.html">Employment &amp; Labour Disputes</a></li>
+            <li><a href="contact.html">Family Law (Divorce, Children &amp; Succession)</a></li>
+            <li><a href="contact.html">Intellectual Property Disputes</a></li>
+            <li><a href="contact.html">Data Protection &amp; Privacy Disputes</a></li>
+            <li><a href="contact.html">Public Procurement Disputes</a></li>
+            <li><a href="contact.html">Environment &amp; Land Disputes</a></li>
+            <li><a href="contact.html">General Civil Litigation</a></li>
+          </ul>
+        </div>
+
+        <div class="practice-group" onclick="toggleGroup(this)">
+          <div class="practice-group-header">
+            <span class="pg-name">Corporate &amp; Commercial Law</span>
+            <span class="pg-icon">+</span>
+          </div>
+          <ul class="practice-sub-list">
+            <li><a href="contact.html">Business Incorporation &amp; Structuring</a></li>
+            <li><a href="contact.html">Corporate Governance &amp; Company Secretarial</a></li>
+            <li><a href="contact.html">Commercial Contracts &amp; Agreements</a></li>
+            <li><a href="contact.html">Regulatory Compliance &amp; Legal Audits</a></li>
+            <li><a href="contact.html">Business Restructuring</a></li>
+            <li><a href="contact.html">General Corporate &amp; Commercial Advisory</a></li>
+          </ul>
+        </div>
+
+        <div class="practice-group" onclick="toggleGroup(this)">
+          <div class="practice-group-header">
+            <span class="pg-name">Conveyancing &amp; Real Estate</span>
+            <span class="pg-icon">+</span>
+          </div>
+          <ul class="practice-sub-list">
+            <li><a href="contact.html">Sale and Purchase of Property</a></li>
+            <li><a href="contact.html">Drafting &amp; Review of Conveyancing Documents</a></li>
+            <li><a href="contact.html">Lease Preparation and Registration</a></li>
+            <li><a href="contact.html">Property Due Diligence</a></li>
+            <li><a href="contact.html">Sectional Properties &amp; Land Transactions</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Column 2 -->
+      <div>
+        <div class="practice-group" onclick="toggleGroup(this)">
+          <div class="practice-group-header">
+            <span class="pg-name">Employment &amp; Labour Relations</span>
+            <span class="pg-icon">+</span>
+          </div>
+          <ul class="practice-sub-list">
+            <li><a href="contact.html">Employment Disputes (Prosecution &amp; Defence)</a></li>
+            <li><a href="contact.html">Labour Law Compliance &amp; Advisory</a></li>
+            <li><a href="contact.html">Employment Contracts &amp; HR Documentation</a></li>
+            <li><a href="contact.html">Workplace Policies &amp; Employee Handbooks</a></li>
+            <li><a href="contact.html">Collective Bargaining Agreements (CBAs)</a></li>
+            <li><a href="contact.html">Training on Employment Laws</a></li>
+          </ul>
+        </div>
+
+        <div class="practice-group" onclick="toggleGroup(this)">
+          <div class="practice-group-header">
+            <span class="pg-name">Intellectual Property</span>
+            <span class="pg-icon">+</span>
+          </div>
+          <ul class="practice-sub-list">
+            <li><a href="contact.html">Trademark &amp; Industrial Design Registration</a></li>
+            <li><a href="contact.html">IP Portfolio Management &amp; Renewals</a></li>
+            <li><a href="contact.html">IP Enforcement &amp; Dispute Resolution</a></li>
+            <li><a href="contact.html">Licensing, Assignment &amp; Commercialisation</a></li>
+            <li><a href="contact.html">IP Advisory &amp; Legal Opinions</a></li>
+          </ul>
+        </div>
+
+        <div class="practice-group" onclick="toggleGroup(this)">
+          <div class="practice-group-header">
+            <span class="pg-name">Data Protection &amp; Privacy</span>
+            <span class="pg-icon">+</span>
+          </div>
+          <ul class="practice-sub-list">
+            <li><a href="contact.html">Data Protection Compliance</a></li>
+            <li><a href="contact.html">Drafting Privacy Policies &amp; Frameworks</a></li>
+            <li><a href="contact.html">Data Protection Audits</a></li>
+            <li><a href="contact.html">Outsourced DPO Services</a></li>
+            <li><a href="contact.html">Data Protection Training</a></li>
+            <li><a href="contact.html">Regulatory Defence &amp; Representation</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Column 3 -->
+      <div>
+        <div class="practice-group" onclick="toggleGroup(this)">
+          <div class="practice-group-header">
+            <span class="pg-name">Technology &amp; Digital Transactions</span>
+            <span class="pg-icon">+</span>
+          </div>
+          <ul class="practice-sub-list">
+            <li><a href="contact.html">Technology Agreements</a></li>
+            <li><a href="contact.html">Software &amp; IT Contracts</a></li>
+            <li><a href="contact.html">E-Commerce &amp; Digital Business Advisory</a></li>
+            <li><a href="contact.html">Tech-Related Regulatory Compliance</a></li>
+            <li><a href="contact.html">Startups &amp; Innovation Advisory</a></li>
+            <li><a href="contact.html">AI Governance &amp; Digital Risk</a></li>
+          </ul>
+        </div>
+
+        <div class="practice-group" onclick="toggleGroup(this)">
+          <div class="practice-group-header">
+            <span class="pg-name">Public Procurement</span>
+            <span class="pg-icon">+</span>
+          </div>
+          <ul class="practice-sub-list">
+            <li><a href="contact.html">Tender Advisory &amp; Documentation</a></li>
+            <li><a href="contact.html">Procurement Compliance</a></li>
+            <li><a href="contact.html">Bid Challenges &amp; Review Proceedings</a></li>
+            <li><a href="contact.html">Procurement Disputes</a></li>
+          </ul>
+        </div>
+
+        <div class="practice-group" onclick="toggleGroup(this)">
+          <div class="practice-group-header">
+            <span class="pg-name">Environment &amp; Land Law</span>
+            <span class="pg-icon">+</span>
+          </div>
+          <ul class="practice-sub-list">
+            <li><a href="contact.html">Environment &amp; Land Disputes</a></li>
+            <li><a href="contact.html">Land Use &amp; Planning Advisory</a></li>
+            <li><a href="contact.html">Environmental Compliance</a></li>
+            <li><a href="contact.html">Land Rights &amp; Interests Advisory</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="full-divider"></div>
+
+<!-- ABOUT / OUR TEAM -->
+<div id="about" class="about-section">
+  <div class="about-banner">
+    <img class="about-banner-bg" src="Esther.jpeg" alt="">
+    <div class="about-banner-overlay"></div>
+    <div class="about-banner-inner">
+      <div class="section-eyebrow">Our People</div>
+      <h2>Meet the Managing Partner</h2>
+    </div>
+  </div>
+
+  <div class="about-body">
+    <div class="attorney-photo-col">
+      <img src="Esther.jpeg" alt="Esther N. Munyua">
+      <div class="attorney-meta">
+        <div class="attorney-meta-name">Esther N. Munyua</div>
+        <div class="attorney-meta-title">Founder &amp; Managing Partner</div>
+        <div class="attorney-cred">LLB — Kenyatta University</div>
+        <div class="attorney-cred">Post-Graduate Diploma in Law — Kenya School of Law</div>
+        <div class="attorney-cred">Advocate of the High Court of Kenya</div>
+        <div class="attorney-cred">Member — Law Society of Kenya</div>
+        <div class="attorney-cred">6+ Years Post-Admission Experience</div>
+      </div>
+    </div>
+
+    <div class="attorney-bio-col">
+      <h4>Managing Partner</h4>
+      <h3>Esther N. Munyua</h3>
+
+      <p>Esther N. Munyua is the Founder and Managing Partner of Munyua N Law Advocates and an Advocate of the High Court of Kenya. As a strategic legal advisor, she sits at the intersection of business, regulation, and dispute resolution — specialising in legal strategies that safeguard business growth and navigate complex regulatory landscapes.</p>
+
+      <p>With over six years of post-admission experience, Esther has built a reputation for combining technical legal precision with a deep understanding of business operations. Her work is anchored in a preventative legal philosophy — leveraging her extensive litigation experience to design structures, contracts, and compliance systems that withstand scrutiny and significantly reduce risk exposure.</p>
+
+      <h4>Core Practice Focus</h4>
+
+      <div class="focus-area">
+        <div class="focus-title">Corporate &amp; Commercial Advisory</div>
+        <div class="focus-text">Advising corporates, startups, and growing businesses across all stages of their lifecycle — structuring transactions, negotiating commercial agreements, and strengthening corporate governance frameworks aligned with specific business objectives.</div>
+      </div>
+      <div class="focus-area">
+        <div class="focus-title">Employment &amp; Labour Law</div>
+        <div class="focus-text">End-to-end advisory on employment matters including workplace compliance, disciplinary processes, and restructuring. Successfully acting for both employers and employees in complex disputes involving unfair termination and constructive dismissal claims.</div>
+      </div>
+      <div class="focus-area">
+        <div class="focus-title">Dispute Resolution &amp; Litigation</div>
+        <div class="focus-text">Extensive courtroom experience in high-stakes litigation informs every advisory engagement — ensuring clients' strategies are not only commercially viable but also defensible in any forum.</div>
+      </div>
+      <div class="focus-area">
+        <div class="focus-title">Regulatory Compliance, Data Protection &amp; AI Governance</div>
+        <div class="focus-text">Advising organisations in technology-driven environments on building robust compliance frameworks under the Data Protection Act and emerging areas of AI governance and digital risk management.</div>
+      </div>
+
+      <h4 style="margin-top:32px">Professional Philosophy</h4>
+      <p>Esther's approach is defined by a clear commitment to being a <strong>Strategic Partner</strong> — preventative rather than reactive, litigation-informed in every recommendation, and grounded in transparent, frequent communication. She leads the firm's vision of delivering legal services as a critical business function, keeping clients consistently informed at every stage.</p>
+    </div>
+  </div>
+</div>
+
+<div class="full-divider"></div>
+
+<!-- CONTACT -->
+<div id="contact" class="contact-section">
+  <div class="contact-banner">
+    <div class="contact-banner-inner">
+      <h2>Ready to speak with us? <strong>Get in touch today.</strong></h2>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:22px;">
+        <a href="tel:+254725465278" class="btn-gold">Call Us Now</a>
+        <a href="https://wa.me/254725465278" target="_blank" class="btn-ghost">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-body">
+    <div>
+      <div class="contact-info-title">Office &amp; Contact Details</div>
+      <ul class="contact-detail-list">
+        <li class="contact-item">
+          <span class="ci-label">Address</span>
+          <span class="ci-value">10th Floor, Unga House, Office No. 1013<br>Muthithi Road, Westlands<br>Nairobi, Kenya</span>
+        </li>
+        <li class="contact-item">
+          <span class="ci-label">Phone</span>
+          <span class="ci-value"><a href="tel:+254725465278">+254 725 465 278</a></span>
+        </li>
+        <li class="contact-item">
+          <span class="ci-label">WhatsApp</span>
+          <span class="ci-value"><a href="https://wa.me/254725465278" target="_blank">+254 725 465 278</a></span>
+        </li>
+        <li class="contact-item">
+          <span class="ci-label">Email</span>
+          <span class="ci-value"><a href="mailto:munyuanlawadvocates@gmail.com">munyuanlawadvocates@gmail.com</a></span>
+        </li>
+        <li class="contact-item">
+          <span class="ci-label">Hours</span>
+          <span class="ci-value">Monday – Friday: 8:00 AM – 6:00 PM<br>Emergency line: +254 725 465 278</span>
+        </li>
+      </ul>
+
+      <div class="pillars-box">
+        <div class="pillars-box-label">Our Core Values</div>
+        <div class="pillars-box-items">
+          Professionalism &nbsp;·&nbsp; Competence<br>
+          Integrity &nbsp;·&nbsp; Efficiency<br>
+          Proactive Communication
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="contact-form-title">Send us a message</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" placeholder="First name">
+        </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" placeholder="Last name">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="+254 700 000 000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Practice Area</label>
+        <select>
+          <option value="">Select area of interest…</option>
+          <option>Litigation &amp; Dispute Resolution</option>
+          <option>Corporate &amp; Commercial Law</option>
+          <option>Conveyancing &amp; Real Estate</option>
+          <option>Employment &amp; Labour Relations</option>
+          <option>Intellectual Property</option>
+          <option>Data Protection &amp; Privacy</option>
+          <option>Technology &amp; Digital Transactions</option>
+          <option>Public Procurement</option>
+          <option>Environment &amp; Land Law</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Brief Description of Your Matter *</label>
+        <textarea placeholder="Please briefly describe your legal matter…"></textarea>
+      </div>
+      <button class="form-submit">Submit Enquiry →</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="logo2.png" alt="Logo">
+      <div class="footer-brand-name">Munyua N Law Advocates</div>
+      <div class="footer-brand-sub">Advocates · Nairobi, Kenya</div>
+      <div class="footer-brand-addr">10th Floor, Unga House<br>Office No. 1013, Muthithi Road<br>Westlands, Nairobi, Kenya</div>
+    </div>
+    <div class="footer-col">
+      <h5>Practice Areas</h5>
+      <ul>
+        <li><a href="expertise.html">Litigation &amp; Disputes</a></li>
+        <li><a href="expertise.html">Corporate &amp; Commercial</a></li>
+        <li><a href="expertise.html">Conveyancing &amp; Real Estate</a></li>
+        <li><a href="expertise.html">Employment &amp; Labour</a></li>
+        <li><a href="expertise.html">Intellectual Property</a></li>
+        <li><a href="expertise.html">Data Protection &amp; Privacy</a></li>
+        <li><a href="expertise.html">Technology Law</a></li>
+        <li><a href="expertise.html">Public Procurement</a></li>
+        <li><a href="expertise.html">Environment &amp; Land</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>About the Firm</h5>
+      <ul>
+        <li><a href="about.html">Managing Partner</a></li>
+        <li><a href="about.html">Our Philosophy</a></li>
+        <li><a href="about.html">Our Values</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:+254725465278">+254 725 465 278</a></li>
+        <li><a href="mailto:munyuanlawadvocates@gmail.com">Email Us</a></li>
+        <li><a href="https://wa.me/254725465278" target="_blank">WhatsApp</a></li>
+        <li><a href="contact.html">Book a Consultation</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Munyua N Law Advocates. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Disclaimer</a>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/254725465278" class="wa-btn" target="_blank" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  // ── CAROUSEL FUNCTIONALITY ──
+  let currentIndex = 0;
+  const autoplayInterval = 3000; // 3 seconds
+  let autoplayTimer;
+
+  function showSlide(index) {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+
+    if (index >= slides.length) currentIndex = 0;
+    if (index < 0) currentIndex = slides.length - 1;
+
+    slides.forEach(slide => slide.classList.remove('active', 'exit'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    slides[currentIndex].classList.add('active');
+    dots[currentIndex].classList.add('active');
+  }
+
+  function nextSlide() {
+    currentIndex++;
+    showSlide(currentIndex);
+  }
+
+  function currentSlide(index) {
+    currentIndex = index;
+    clearInterval(autoplayTimer);
+    showSlide(currentIndex);
+    autoplay();
+  }
+
+  function autoplay() {
+    autoplayTimer = setInterval(() => {
+      nextSlide();
+    }, autoplayInterval);
+  }
+
+  // Initialize carousel on load
+  window.addEventListener('load', () => {
+    showSlide(currentIndex);
+    autoplay();
+  });
+
+  // Pause autoplay on hover and resume on leave
+  const carousel = document.querySelector('.hero-banner');
+  carousel.addEventListener('mouseenter', () => {
+    clearInterval(autoplayTimer);
+  });
+
+  carousel.addEventListener('mouseleave', () => {
+    autoplay();
+  });
+
+  // ── PRACTICE GROUP ACCORDION ──
+  function toggleGroup(el) {
+    el.classList.toggle('open');
+    checkToggleAllState();
+  }
+
+  let allExpanded = false;
+  function toggleAll() {
+    const groups = document.querySelectorAll('.practice-group');
+    const btn = document.getElementById('toggleAllBtn');
+    allExpanded = !allExpanded;
+    groups.forEach(g => g.classList.toggle('open', allExpanded));
+    btn.textContent = allExpanded ? 'Collapse all' : 'Expand all';
+  }
+
+  function checkToggleAllState() {
+    const total = document.querySelectorAll('.practice-group').length;
+    const open  = document.querySelectorAll('.practice-group.open').length;
+    const btn   = document.getElementById('toggleAllBtn');
+    allExpanded = open === total;
+    btn.textContent = allExpanded ? 'Collapse all' : 'Expand all';
+  }
+
+  // ── ACTIVE NAV STATE ON SCROLL ──
+  window.addEventListener('scroll', () => {
+    const anchors = ['home','expertise','about','contact'];
+    let cur = 'home';
+    anchors.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 80) cur = id;
+    });
+    document.querySelectorAll('.nav-menu > li > a:not(.nav-cta)').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+    });
+  });
+</script>
+
+</body>
+</html>

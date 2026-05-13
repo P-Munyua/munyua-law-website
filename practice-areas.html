@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice Areas — Munyua N Law Advocates</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --teal:#0d4a4a; --teal-dark:#082e2e; --teal-hover:#1a6060;
+  --gold:#c9a84c; --gold-dark:#a07830;
+  --white:#ffffff; --off-white:#f7f7f5; --mid-gray:#e2e0db;
+  --text:#1a1a1a; --muted:#555550; --border:#d8d6d0; --nav-h:64px;
+}
+html { scroll-behavior:smooth; }
+body { font-family:'Source Sans 3',sans-serif; color:var(--text); background:var(--white); font-size:16px; line-height:1.6; }
+
+/* UTIL BAR */
+.util-bar { background:var(--teal-dark); padding:0 48px; display:flex; justify-content:flex-end; align-items:center; height:36px; font-size:12px; }
+.util-bar a { color:rgba(255,255,255,.65); text-decoration:none; padding:0 16px; height:36px; display:flex; align-items:center; border-left:1px solid rgba(255,255,255,.1); transition:color .2s; letter-spacing:.04em; }
+.util-bar a:hover { color:var(--gold); }
+
+/* NAV */
+nav { background:var(--white); height:var(--nav-h); border-bottom:1px solid var(--border); display:flex; align-items:center; padding:0 48px; justify-content:space-between; position:sticky; top:0; z-index:200; box-shadow:0 2px 12px rgba(0,0,0,.04); }
+.nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.nav-logo img { height:44px; width:44px; object-fit:contain; }
+.nav-logo-text { font-family:'Libre Baskerville',serif; font-size:15px; font-weight:700; color:var(--teal); line-height:1.25; }
+.nav-logo-text span { display:block; font-size:10px; font-family:'Source Sans 3',sans-serif; font-weight:400; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-dark); }
+.nav-menu { display:flex; align-items:center; height:var(--nav-h); list-style:none; }
+.nav-menu > li { position:relative; height:100%; }
+.nav-menu > li > a { display:flex; align-items:center; height:100%; padding:0 18px; font-size:13.5px; font-weight:500; color:var(--text); text-decoration:none; letter-spacing:.03em; gap:4px; border-bottom:3px solid transparent; transition:color .2s,border-color .2s; }
+.nav-menu > li > a:hover, .nav-menu > li > a.active { color:var(--teal); border-bottom-color:var(--gold); }
+.chev { font-size:9px; margin-top:1px; }
+.nav-menu > li:hover .mega { display:block; }
+.mega { display:none; position:absolute; top:var(--nav-h); left:0; min-width:240px; background:var(--white); border:1px solid var(--border); border-top:3px solid var(--gold); box-shadow:0 8px 32px rgba(0,0,0,.12); z-index:300; }
+.mega a { display:block; padding:10px 20px; font-size:13px; color:var(--muted); text-decoration:none; border-bottom:1px solid var(--border); transition:background .15s,color .15s; }
+.mega a:last-child { border-bottom:none; }
+.mega a:hover { background:var(--off-white); color:var(--teal); }
+.nav-cta { margin-left:16px; padding:9px 20px !important; height:auto !important; background:var(--teal) !important; color:var(--white) !important; font-size:12.5px !important; font-weight:600 !important; letter-spacing:.07em !important; text-transform:uppercase; border-bottom:none !important; text-decoration:none; display:inline-flex !important; align-items:center; transition:background .2s !important; }
+.nav-cta:hover { background:var(--teal-hover) !important; }
+
+/* PAGE HERO */
+.page-hero { background:var(--teal); position:relative; overflow:hidden; min-height:260px; display:flex; align-items:flex-end; }
+.page-hero-bg { position:absolute; inset:0; background:linear-gradient(to right,rgba(8,46,46,.95) 40%,rgba(8,46,46,.65) 100%); z-index:1; }
+.page-hero-content { position:relative; z-index:2; max-width:1200px; margin:0 auto; width:100%; padding:52px 48px 44px; }
+.page-eyebrow { font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+.page-hero h1 { font-family:'Libre Baskerville',serif; font-size:clamp(28px,4vw,48px); font-weight:400; color:var(--white); line-height:1.2; margin-bottom:14px; }
+.page-hero h1 em { font-style:italic; color:var(--gold); }
+.page-hero-desc { font-size:15px; color:rgba(255,255,255,.72); max-width:560px; line-height:1.75; }
+
+/* BREADCRUMB */
+.breadcrumb { background:var(--off-white); border-bottom:1px solid var(--border); padding:10px 48px; }
+.breadcrumb-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:8px; font-size:12px; color:var(--muted); }
+.breadcrumb-inner a { color:var(--teal); text-decoration:none; }
+.breadcrumb-inner a:hover { text-decoration:underline; }
+.breadcrumb-sep { color:var(--border); }
+
+/* PRACTICE AREAS GRID */
+.pa-section { max-width:1200px; margin:0 auto; padding:60px 48px 72px; }
+.pa-intro { text-align:center; max-width:680px; margin:0 auto 56px; }
+.pa-intro h2 { font-family:'Libre Baskerville',serif; font-size:clamp(22px,3vw,34px); font-weight:400; color:var(--teal); font-style:italic; margin-bottom:14px; }
+.pa-intro p { font-size:15px; color:var(--muted); line-height:1.8; }
+
+.pa-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--mid-gray); border:2px solid var(--mid-gray); }
+.pa-card { background:var(--white); padding:32px 28px 28px; position:relative; transition:background .2s; display:flex; flex-direction:column; }
+.pa-card:hover { background:var(--off-white); }
+.pa-card-num { font-size:11px; letter-spacing:.18em; color:var(--gold); font-weight:600; margin-bottom:10px; }
+.pa-card-icon { width:40px; height:40px; margin-bottom:16px; color:var(--teal); }
+.pa-card h3 { font-family:'Libre Baskerville',serif; font-size:17px; font-weight:700; color:var(--teal); margin-bottom:12px; line-height:1.3; }
+.pa-card p { font-size:13.5px; color:var(--muted); line-height:1.7; flex:1; margin-bottom:20px; }
+.pa-card-services { list-style:none; margin-bottom:22px; }
+.pa-card-services li { font-size:12.5px; color:var(--muted); padding:4px 0; border-bottom:1px solid var(--border); display:flex; gap:6px; align-items:flex-start; }
+.pa-card-services li:last-child { border-bottom:none; }
+.pa-card-services li::before { content:'—'; color:var(--gold); flex-shrink:0; font-size:11px; margin-top:2px; }
+.pa-card-link { display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600; color:var(--teal); text-decoration:none; letter-spacing:.05em; text-transform:uppercase; border-bottom:2px solid var(--gold); padding-bottom:2px; transition:color .2s; }
+.pa-card-link:hover { color:var(--gold-dark); }
+.pa-card-link span { font-size:14px; }
+
+/* APPROACH STRIP */
+.approach-strip { background:var(--off-white); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.approach-inner { max-width:1200px; margin:0 auto; padding:56px 48px; display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+.approach-text h2 { font-family:'Libre Baskerville',serif; font-size:clamp(22px,2.5vw,32px); font-weight:400; color:var(--teal); margin-bottom:18px; }
+.approach-text p { font-size:15px; color:var(--muted); line-height:1.8; margin-bottom:14px; }
+.pillar-list { list-style:none; }
+.pillar-item { display:flex; gap:16px; align-items:flex-start; padding:14px 0; border-bottom:1px solid var(--border); }
+.pillar-item:first-child { border-top:1px solid var(--border); }
+.pillar-icon { width:36px; height:36px; background:var(--teal); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.pillar-icon svg { width:18px; height:18px; fill:var(--gold); }
+.pillar-text strong { display:block; font-size:13.5px; color:var(--teal); font-weight:600; margin-bottom:2px; }
+.pillar-text span { font-size:13px; color:var(--muted); }
+
+/* CTA STRIP */
+.cta-strip { background:var(--teal); padding:52px 48px; }
+.cta-strip-inner { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap; }
+.cta-strip h2 { font-family:'Libre Baskerville',serif; font-size:clamp(18px,2.5vw,30px); font-weight:400; color:var(--white); font-style:italic; }
+.cta-strip h2 strong { font-style:normal; color:var(--gold); }
+.cta-actions { display:flex; gap:14px; flex-wrap:wrap; }
+.btn-gold { padding:12px 26px; background:var(--gold); color:var(--teal-dark); font-weight:600; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; transition:background .2s; display:inline-block; }
+.btn-gold:hover { background:var(--gold-dark); color:#fff; }
+.btn-ghost { padding:11px 26px; border:1px solid rgba(255,255,255,.4); color:rgba(255,255,255,.85); font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; transition:border-color .2s,color .2s; display:inline-block; }
+.btn-ghost:hover { border-color:var(--gold); color:var(--gold); }
+
+/* FOOTER */
+footer { background:var(--teal-dark); }
+.footer-top { max-width:1200px; margin:0 auto; padding:52px 48px 36px; display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:44px; border-bottom:1px solid rgba(255,255,255,.08); }
+.footer-brand img { height:52px; width:52px; object-fit:contain; margin-bottom:14px; display:block; }
+.footer-brand-name { font-family:'Libre Baskerville',serif; font-size:15px; color:var(--gold); font-weight:700; margin-bottom:2px; }
+.footer-brand-sub { font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:16px; }
+.footer-brand-addr { font-size:12.5px; color:rgba(255,255,255,.45); line-height:1.75; }
+.footer-col h5 { font-size:10.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid rgba(201,168,76,.2); }
+.footer-col ul { list-style:none; }
+.footer-col ul li { margin-bottom:8px; }
+.footer-col ul li a { font-size:13px; color:rgba(255,255,255,.5); text-decoration:none; transition:color .2s; }
+.footer-col ul li a:hover { color:var(--gold); }
+.footer-bottom { max-width:1200px; margin:0 auto; padding:18px 48px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; font-size:12px; color:rgba(255,255,255,.32); }
+.footer-bottom a { color:rgba(255,255,255,.32); text-decoration:none; transition:color .2s; }
+.footer-bottom a:hover { color:var(--gold); }
+.footer-bottom-links { display:flex; gap:20px; }
+
+/* WA BTN */
+.wa-btn { position:fixed; bottom:28px; right:28px; width:54px; height:54px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(0,0,0,.25); z-index:999; text-decoration:none; transition:transform .2s,box-shadow .2s; }
+.wa-btn:hover { transform:scale(1.08); }
+.wa-btn svg { width:28px; height:28px; fill:#fff; }
+
+@media(max-width:960px){
+  .util-bar,nav,.cta-strip,.footer-bottom{padding-left:20px;padding-right:20px;}
+  .page-hero-content,.breadcrumb,.pa-section{padding-left:20px;padding-right:20px;}
+  .pa-grid{grid-template-columns:1fr;}
+  .approach-inner{grid-template-columns:1fr;padding:40px 20px;}
+  .footer-top{grid-template-columns:1fr 1fr;padding:40px 20px;}
+  .nav-menu{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="util-bar">
+  <a href="tel:+254725465278">+254 725 465 278</a>
+  <a href="mailto:munyuanlawadvocates@gmail.com">munyuanlawadvocates@gmail.com</a>
+  <a href="contact.html">Client Enquiry</a>
+</div>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <img src="../logo.jpeg" alt="Munyua N Law Advocates Logo">
+    <div class="nav-logo-text">Munyua N Law <span>Advocates</span></div>
+  </a>
+  <ul class="nav-menu">
+    <li>
+      <a href="about.html">About <span class="chev">▾</span></a>
+      <div class="mega">
+        <a href="about.html">Our Firm</a>
+        <a href="about.html#partner">Managing Partner</a>
+        <a href="about.html#philosophy">Our Philosophy</a>
+      </div>
+    </li>
+    <li><a href="about.html">People</a></li>
+    <li>
+      <a href="practice-areas.html" class="active">Expertise <span class="chev">▾</span></a>
+      <div class="mega">
+        <a href="practice-areas.html">All Practice Areas</a>
+        <a href="litigation.html">Litigation &amp; Dispute Resolution</a>
+        <a href="corporate.html">Corporate &amp; Commercial Law</a>
+        <a href="conveyancing.html">Conveyancing &amp; Real Estate</a>
+        <a href="employment.html">Employment &amp; Labour</a>
+        <a href="ip.html">Intellectual Property</a>
+        <a href="data-protection.html">Data Protection &amp; Privacy</a>
+        <a href="technology.html">Technology Law</a>
+        <a href="procurement.html">Public Procurement</a>
+        <a href="environment.html">Environment &amp; Land</a>
+      </div>
+    </li>
+    <li><a href="insights.html">Insights</a></li>
+    <li>
+      <a href="contact.html">Contact <span class="chev">▾</span></a>
+      <div class="mega">
+        <a href="contact.html">Send a Message</a>
+        <a href="https://wa.me/254725465278" target="_blank">WhatsApp</a>
+        <a href="contact.html#office">Our Office</a>
+      </div>
+    </li>
+    <li><a href="contact.html" class="nav-cta">Book a Consultation</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <div class="page-eyebrow">Our Expertise</div>
+    <h1>Practice <em>Areas</em></h1>
+    <p class="page-hero-desc">Comprehensive legal services across nine core disciplines — combining technical precision with a deep understanding of your commercial and personal objectives.</p>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Practice Areas</span>
+  </div>
+</div>
+
+<!-- PRACTICE AREAS GRID -->
+<div class="pa-section">
+  <div class="pa-intro">
+    <h2>The expertise you need, when and where you need it.</h2>
+    <p>At Munyua N Law Advocates, our multidisciplinary approach ensures that whether you are an individual seeking private counsel, a scaling startup, or an established enterprise, your legal interests are protected with precision and foresight.</p>
+  </div>
+
+  <div class="pa-grid">
+
+    <!-- 1 Litigation -->
+    <div class="pa-card">
+      <div class="pa-card-num">01</div>
+      <svg class="pa-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 12h18M5.636 5.636l12.728 12.728M18.364 5.636L5.636 18.364"/><rect x="3" y="3" width="18" height="18" rx="1"/></svg>
+      <h3>Litigation &amp; Dispute Resolution</h3>
+      <p>We represent clients in complex disputes with a strategic, results-driven approach across courts and alternative dispute resolution forums.</p>
+      <ul class="pa-card-services">
+        <li>Arbitration</li>
+        <li>Mediation</li>
+        <li>Commercial Litigation</li>
+        <li>Employment &amp; Labour Disputes</li>
+        <li>Family Law (Divorce, Children &amp; Succession)</li>
+        <li>IP &amp; Data Protection Disputes</li>
+        <li>General Civil Litigation</li>
+      </ul>
+      <a href="litigation.html" class="pa-card-link">Learn more <span>→</span></a>
+    </div>
+
+    <!-- 2 Corporate -->
+    <div class="pa-card">
+      <div class="pa-card-num">02</div>
+      <svg class="pa-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+      <h3>Corporate &amp; Commercial Law</h3>
+      <p>We provide practical legal solutions to support business formation, growth, governance, and day-to-day commercial operations.</p>
+      <ul class="pa-card-services">
+        <li>Business Incorporation &amp; Structuring</li>
+        <li>Corporate Governance &amp; Company Secretarial</li>
+        <li>Commercial Contracts &amp; Agreements</li>
+        <li>Regulatory Compliance &amp; Legal Audits</li>
+        <li>Business Restructuring</li>
+        <li>General Corporate Advisory</li>
+      </ul>
+      <a href="corporate.html" class="pa-card-link">Learn more <span>→</span></a>
+    </div>
+
+    <!-- 3 Conveyancing -->
+    <div class="pa-card">
+      <div class="pa-card-num">03</div>
+      <svg class="pa-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <h3>Conveyancing &amp; Real Estate</h3>
+      <p>We handle property transactions with precision and efficiency, ensuring secure and seamless transfers from start to completion.</p>
+      <ul class="pa-card-services">
+        <li>Sale and Purchase of Property</li>
+        <li>Drafting &amp; Review of Conveyancing Documents</li>
+        <li>Lease Preparation and Registration</li>
+        <li>Property Due Diligence</li>
+        <li>Sectional Properties &amp; Land Transactions</li>
+      </ul>
+      <a href="conveyancing.html" class="pa-card-link">Learn more <span>→</span></a>
+    </div>
+
+    <!-- 4 Employment -->
+    <div class="pa-card">
+      <div class="pa-card-num">04</div>
+      <svg class="pa-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      <h3>Employment &amp; Labour Relations</h3>
+      <p>We advise employers and employees on workplace matters, offering clear guidance on compliance, disputes, and employment frameworks.</p>
+      <ul class="pa-card-services">
+        <li>Employment Disputes (Prosecution &amp; Defence)</li>
+        <li>Labour Law Compliance &amp; Advisory</li>
+        <li>Employment Contracts &amp; HR Documentation</li>
+        <li>Workplace Policies &amp; Employee Handbooks</li>
+        <li>Collective Bargaining Agreements</li>
+        <li>Training on Employment Laws</li>
+      </ul>
+      <a href="employment.html" class="pa-card-link">Learn more <span>→</span></a>
+    </div>
+
+    <!-- 5 IP -->
+    <div class="pa-card">
+      <div class="pa-card-num">05</div>
+      <svg class="pa-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.5 9a2.5 2.5 0 015 0c0 2.5-5 2.5-5 5h5"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2" stroke-linecap="round"/></svg>
+      <h3>Intellectual Property</h3>
+      <p>We protect, manage, and enforce intellectual property rights to safeguard our clients' brands, innovations, and creative works.</p>
+      <ul class="pa-card-services">
+        <li>Trademark &amp; Industrial Design Registration</li>
+        <li>IP Portfolio Management &amp; Renewals</li>
+        <li>IP Enforcement &amp; Dispute Resolution</li>
+        <li>Licensing, Assignment &amp; Commercialisation</li>
+        <li>IP Advisory &amp; Legal Opinions</li>
+      </ul>
+      <a href="ip.html" class="pa-card-link">Learn more <span>→</span></a>
+    </div>
+
+    <!-- 6 Data Protection -->
+    <div class="pa-card">
+      <div class="pa-card-num">06</div>
+      <svg class="pa-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <h3>Data Protection &amp; Privacy</h3>
+      <p>We support organizations in achieving and maintaining compliance with data protection laws through practical and tailored solutions.</p>
+      <ul class="pa-card-services">
+        <li>Data Protection Compliance</li>
+        <li>Drafting Privacy Policies &amp; Frameworks</li>
+        <li>Data Protection Audits</li>
+        <li>Outsourced DPO Services</li>
+        <li>Data Protection Training</li>
+        <li>Regulatory Defence &amp; Representation</li>
+      </ul>
+      <a href="data-protection.html" class="pa-card-link">Learn more <span>→</span></a>
+    </div>
+
+    <!-- 7 Technology -->
+    <div class="pa-card">
+      <div class="pa-card-num">07</div>
+      <svg class="pa-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="1"/><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      <h3>Technology &amp; Digital Transactions</h3>
+      <p>We provide forward-thinking legal support for digital businesses, technology transactions, and innovation-driven enterprises.</p>
+      <ul class="pa-card-services">
+        <li>Technology Agreements</li>
+        <li>Software &amp; IT Contracts</li>
+        <li>E-Commerce &amp; Digital Business Advisory</li>
+        <li>Tech-Related Regulatory Compliance</li>
+        <li>Startups &amp; Innovation Advisory</li>
+        <li>AI Governance &amp; Digital Risk</li>
+      </ul>
+      <a href="technology.html" class="pa-card-link">Learn more <span>→</span></a>
+    </div>
+
+    <!-- 8 Procurement -->
+    <div class="pa-card">
+      <div class="pa-card-num">08</div>
+      <svg class="pa-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      <h3>Public Procurement</h3>
+      <p>We guide clients through public procurement processes, ensuring compliance, competitiveness, and effective dispute resolution.</p>
+      <ul class="pa-card-services">
+        <li>Tender Advisory &amp; Documentation</li>
+        <li>Procurement Compliance</li>
+        <li>Bid Challenges &amp; Review Proceedings</li>
+        <li>Procurement Disputes</li>
+      </ul>
+      <a href="procurement.html" class="pa-card-link">Learn more <span>→</span></a>
+    </div>
+
+    <!-- 9 Environment -->
+    <div class="pa-card">
+      <div class="pa-card-num">09</div>
+      <svg class="pa-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <h3>Environment &amp; Land Law</h3>
+      <p>We advise on land and environmental matters, helping clients navigate regulatory requirements and resolve related disputes.</p>
+      <ul class="pa-card-services">
+        <li>Environment &amp; Land Disputes</li>
+        <li>Land Use &amp; Planning Advisory</li>
+        <li>Environmental Compliance</li>
+        <li>Land Rights &amp; Interests Advisory</li>
+      </ul>
+      <a href="environment.html" class="pa-card-link">Learn more <span>→</span></a>
+    </div>
+
+  </div>
+</div>
+
+<!-- APPROACH -->
+<div class="approach-strip">
+  <div class="approach-inner">
+    <div class="approach-text">
+      <h2>Our Approach: Preventative, Strategic, Business-Focused</h2>
+      <p>Every engagement at Munyua N Law Advocates is guided by a commitment to being a strategic partner — not just external counsel. We design legal solutions that proactively reduce disputes and regulatory exposure.</p>
+      <p>Our extensive litigation experience informs every advisory engagement, ensuring that structures, contracts, and compliance systems are built to withstand scrutiny in any forum.</p>
+    </div>
+    <ul class="pillar-list">
+      <li class="pillar-item">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="pillar-text"><strong>Preventative, Not Reactive</strong><span>Designing systems that proactively reduce disputes and regulatory exposure.</span></div>
+      </li>
+      <li class="pillar-item">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+        <div class="pillar-text"><strong>Litigation-Informed Advisory</strong><span>Solutions built to withstand tomorrow's legal challenges.</span></div>
+      </li>
+      <li class="pillar-item">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+        <div class="pillar-text"><strong>Business-Centric Thinking</strong><span>Legal strategies aligned with your operational and commercial goals.</span></div>
+      </li>
+      <li class="pillar-item">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div class="pillar-text"><strong>Transparent Partnership</strong><span>Frequent correspondence and proactive communication at every stage.</span></div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="cta-strip-inner">
+    <h2>Ready to speak with us? <strong>Get in touch today.</strong></h2>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn-gold">Book a Consultation</a>
+      <a href="https://wa.me/254725465278" target="_blank" class="btn-ghost">WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="../logo.jpeg" alt="Logo">
+      <div class="footer-brand-name">Munyua N Law Advocates</div>
+      <div class="footer-brand-sub">Advocates · Nairobi, Kenya</div>
+      <div class="footer-brand-addr">10th Floor, Unga House<br>Office No. 1013, Muthithi Road<br>Westlands, Nairobi, Kenya</div>
+    </div>
+    <div class="footer-col">
+      <h5>Practice Areas</h5>
+      <ul>
+        <li><a href="litigation.html">Litigation &amp; Disputes</a></li>
+        <li><a href="corporate.html">Corporate &amp; Commercial</a></li>
+        <li><a href="conveyancing.html">Conveyancing &amp; Real Estate</a></li>
+        <li><a href="employment.html">Employment &amp; Labour</a></li>
+        <li><a href="ip.html">Intellectual Property</a></li>
+        <li><a href="data-protection.html">Data Protection &amp; Privacy</a></li>
+        <li><a href="technology.html">Technology Law</a></li>
+        <li><a href="procurement.html">Public Procurement</a></li>
+        <li><a href="environment.html">Environment &amp; Land</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>About the Firm</h5>
+      <ul>
+        <li><a href="about.html">Managing Partner</a></li>
+        <li><a href="about.html#philosophy">Our Philosophy</a></li>
+        <li><a href="about.html#values">Our Values</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:+254725465278">+254 725 465 278</a></li>
+        <li><a href="mailto:munyuanlawadvocates@gmail.com">Email Us</a></li>
+        <li><a href="https://wa.me/254725465278" target="_blank">WhatsApp</a></li>
+        <li><a href="contact.html">Book a Consultation</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Munyua N Law Advocates. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/254725465278" class="wa-btn" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+</body>
+</html>

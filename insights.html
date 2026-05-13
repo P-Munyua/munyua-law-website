@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights | Munyua N Law Advocates</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.insights-layout { display: grid; grid-template-columns: 1fr 280px; gap: 56px; align-items: start; }
+/* Filter tabs */
+.filter-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 36px; overflow-x: auto; }
+.ftab { padding: 11px 20px; background: none; border: none; border-bottom: 3px solid transparent; font-family: 'Source Sans 3', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); cursor: pointer; white-space: nowrap; margin-bottom: -1px; transition: color .2s, border-color .2s; }
+.ftab:hover { color: var(--teal); }
+.ftab.active { color: var(--teal); border-bottom-color: var(--gold); }
+/* Article cards */
+.articles-list { display: flex; flex-direction: column; gap: 0; }
+.article-card { padding: 28px 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr 120px; gap: 28px; align-items: start; cursor: pointer; transition: background .15s; }
+.article-card:first-child { border-top: 1px solid var(--border); }
+.article-card:hover .ac-title { color: var(--gold-dark); }
+.ac-meta { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 8px; }
+.ac-title { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 400; color: var(--teal); line-height: 1.3; margin-bottom: 10px; transition: color .2s; }
+.ac-excerpt { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
+.ac-tag { display: inline-block; padding: 3px 10px; background: var(--light-gray); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.ac-image { width: 120px; height: 90px; background: var(--light-gray); border-top: 3px solid var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ac-image-placeholder { font-size: 28px; opacity: .4; }
+.ac-read-more { font-size: 12.5px; color: var(--teal); text-decoration: underline; text-underline-offset: 2px; margin-top: 4px; }
+/* Featured article */
+.featured-article { background: var(--teal); padding: 36px; margin-bottom: 36px; }
+.fa-eyebrow { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.fa-title { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 400; color: var(--white); line-height: 1.3; margin-bottom: 14px; }
+.fa-excerpt { font-size: 14px; color: rgba(255,255,255,.68); line-height: 1.75; margin-bottom: 20px; }
+/* Sidebar */
+.insights-sidebar { position: sticky; top: 80px; }
+.sidebar-box { background: var(--off-white); padding: 24px; border: 1px solid var(--border); margin-bottom: 24px; }
+.sb-title { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.sb-topic { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; color: var(--teal); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; transition: color .15s; }
+.sb-topic:last-child { border-bottom: none; }
+.sb-topic:hover { color: var(--gold-dark); }
+.sb-count { font-size: 11px; color: var(--muted); background: var(--mid-gray); padding: 2px 7px; border-radius: 2px; }
+.newsletter-box { background: var(--teal); padding: 24px; }
+.nl-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--white); margin-bottom: 8px; }
+.nl-desc { font-size: 13px; color: rgba(255,255,255,.65); margin-bottom: 16px; line-height: 1.6; }
+.nl-input { width: 100%; padding: 10px 12px; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.08); color: var(--white); font-family: 'Source Sans 3', sans-serif; font-size: 13.5px; margin-bottom: 10px; outline: none; }
+.nl-input::placeholder { color: rgba(255,255,255,.4); }
+.nl-input:focus { border-color: var(--gold); }
+.nl-btn { width: 100%; padding: 11px; background: var(--gold); color: var(--teal-dark); font-weight: 700; font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; border: none; cursor: pointer; transition: background .2s; }
+.nl-btn:hover { background: var(--gold-dark); color: #fff; }
+@media (max-width: 900px) {
+  .insights-layout { grid-template-columns: 1fr; }
+  .insights-sidebar { position: static; }
+  .article-card { grid-template-columns: 1fr; }
+  .ac-image { display: none; }
+}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="page-hero">
+  <img class="page-hero-img" src="assets/esther.png" alt="">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Knowledge &amp; Commentary</div>
+    <h1>Legal <em>Insights</em></h1>
+  </div>
+</div>
+
+<div class="sub-nav">
+  <div class="sub-nav-inner">
+    <a href="insights.html" class="active">All Insights</a>
+    <a href="insights.html">Articles</a>
+    <a href="insights.html">Legal Updates</a>
+    <a href="insights.html">Data Protection</a>
+    <a href="insights.html">Employment Law</a>
+    <a href="insights.html">Corporate</a>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="insights-layout">
+    <!-- MAIN -->
+    <div>
+      <!-- Featured -->
+      <div class="featured-article">
+        <div class="fa-eyebrow">Featured · Data Protection</div>
+        <div class="fa-title">What Kenya's Data Protection Act Means for Your Business in 2025</div>
+        <div class="fa-excerpt">The Office of the Data Protection Commissioner continues to intensify enforcement. Here is what every Kenyan business needs to know about compliance obligations, common pitfalls, and practical steps to reduce risk.</div>
+        <a href="contact.html" class="btn-gold" style="font-size:12px;">Read More →</a>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="filter-tabs">
+        <button class="ftab active" onclick="filterTab(this)">All</button>
+        <button class="ftab" onclick="filterTab(this)">Data Protection</button>
+        <button class="ftab" onclick="filterTab(this)">Employment Law</button>
+        <button class="ftab" onclick="filterTab(this)">Corporate Law</button>
+        <button class="ftab" onclick="filterTab(this)">Real Estate</button>
+        <button class="ftab" onclick="filterTab(this)">Technology</button>
+      </div>
+
+      <!-- Articles -->
+      <div class="articles-list">
+
+        <div class="article-card">
+          <div>
+            <div class="ac-meta">May 2025 · Employment Law</div>
+            <div class="ac-title">Unfair Termination in Kenya: What Employers Must Know Before Dismissing an Employee</div>
+            <div class="ac-excerpt">Kenyan employment law imposes strict procedural requirements on employers before a valid dismissal can occur. Failure to follow due process — regardless of the substantive reason — can expose employers to significant liability.</div>
+            <div><span class="ac-tag">Employment</span><span class="ac-tag">HR</span></div>
+            <div class="ac-read-more">Read More →</div>
+          </div>
+          <div class="ac-image"><div class="ac-image-placeholder">⚖️</div></div>
+        </div>
+
+        <div class="article-card">
+          <div>
+            <div class="ac-meta">April 2025 · Corporate Law</div>
+            <div class="ac-title">Five Legal Mistakes Kenyan Startups Make — And How to Avoid Them</div>
+            <div class="ac-excerpt">From improper incorporation structures to founder agreements that unravel at the worst possible moment, these are the most common legal errors we see in early-stage Kenyan businesses — and how to prevent them.</div>
+            <div><span class="ac-tag">Startups</span><span class="ac-tag">Corporate</span></div>
+            <div class="ac-read-more">Read More →</div>
+          </div>
+          <div class="ac-image"><div class="ac-image-placeholder">🏢</div></div>
+        </div>
+
+        <div class="article-card">
+          <div>
+            <div class="ac-meta">March 2025 · Real Estate</div>
+            <div class="ac-title">Property Due Diligence in Kenya: A Practical Guide for Buyers</div>
+            <div class="ac-excerpt">Purchasing property in Kenya involves multiple layers of verification — from land registry searches to investigating encumbrances and confirming legitimate ownership. This guide walks you through what a thorough due diligence process looks like.</div>
+            <div><span class="ac-tag">Real Estate</span><span class="ac-tag">Conveyancing</span></div>
+            <div class="ac-read-more">Read More →</div>
+          </div>
+          <div class="ac-image"><div class="ac-image-placeholder">🏘️</div></div>
+        </div>
+
+        <div class="article-card">
+          <div>
+            <div class="ac-meta">February 2025 · Technology</div>
+            <div class="ac-title">AI Governance in Kenya: What Businesses Need to Prepare For</div>
+            <div class="ac-excerpt">As artificial intelligence becomes embedded in business operations, the legal and regulatory landscape is evolving rapidly. We explore what Kenya's emerging AI governance framework means for businesses operating in the digital economy.</div>
+            <div><span class="ac-tag">AI</span><span class="ac-tag">Technology</span><span class="ac-tag">Compliance</span></div>
+            <div class="ac-read-more">Read More →</div>
+          </div>
+          <div class="ac-image"><div class="ac-image-placeholder">🤖</div></div>
+        </div>
+
+        <div class="article-card">
+          <div>
+            <div class="ac-meta">January 2025 · Data Protection</div>
+            <div class="ac-title">Outsourced DPO Services: Is Your Organisation Required to Appoint a Data Protection Officer?</div>
+            <div class="ac-excerpt">The Data Protection Act requires certain organisations to appoint a Data Protection Officer. We clarify who is obligated, what the DPO role entails, and why outsourcing this function may be the most practical solution for many businesses.</div>
+            <div><span class="ac-tag">Data Protection</span><span class="ac-tag">Compliance</span></div>
+            <div class="ac-read-more">Read More →</div>
+          </div>
+          <div class="ac-image"><div class="ac-image-placeholder">🔒</div></div>
+        </div>
+
+        <div class="article-card">
+          <div>
+            <div class="ac-meta">December 2024 · Procurement</div>
+            <div class="ac-title">Challenging a Procurement Decision: Your Rights Under Kenya's Public Procurement Law</div>
+            <div class="ac-excerpt">Unsuccessful tenderers often don't realise they have legal recourse when a procurement decision appears flawed. We outline the review and appeal mechanisms available and the strict timelines that apply.</div>
+            <div><span class="ac-tag">Procurement</span><span class="ac-tag">Disputes</span></div>
+            <div class="ac-read-more">Read More →</div>
+          </div>
+          <div class="ac-image"><div class="ac-image-placeholder">📋</div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="insights-sidebar">
+      <div class="sidebar-box">
+        <div class="sb-title">Topics</div>
+        <div class="sb-topic">Data Protection &amp; Privacy <span class="sb-count">4</span></div>
+        <div class="sb-topic">Employment Law <span class="sb-count">3</span></div>
+        <div class="sb-topic">Corporate &amp; Commercial <span class="sb-count">5</span></div>
+        <div class="sb-topic">Real Estate &amp; Conveyancing <span class="sb-count">2</span></div>
+        <div class="sb-topic">Technology &amp; AI <span class="sb-count">3</span></div>
+        <div class="sb-topic">Intellectual Property <span class="sb-count">2</span></div>
+        <div class="sb-topic">Public Procurement <span class="sb-count">2</span></div>
+        <div class="sb-topic">Environment &amp; Land <span class="sb-count">1</span></div>
+      </div>
+
+      <div class="newsletter-box">
+        <div class="nl-title">Legal Updates</div>
+        <div class="nl-desc">Stay informed on Kenyan law developments. Subscribe to our insights newsletter.</div>
+        <input class="nl-input" type="email" placeholder="Your email address">
+        <button class="nl-btn">Subscribe</button>
+      </div>
+
+      <div class="sidebar-box" style="margin-top:0">
+        <div class="sb-title">Need Legal Advice?</div>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:16px;">Our team is ready to discuss your matter and provide clear, practical guidance.</p>
+        <a href="contact.html" class="btn-primary" style="display:block;text-align:center;">Book a Consultation</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Have a legal question? <strong>Let's talk.</strong></h2>
+    <div class="cta-band-actions">
+      <a href="contact.html" class="btn-gold">Get in Touch</a>
+      <a href="https://wa.me/254725465278" target="_blank" class="btn-ghost">WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="shared.js"></script>
+<script>
+renderNav('insights');
+function filterTab(btn) {
+  document.querySelectorAll('.ftab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

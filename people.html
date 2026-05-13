@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esther N. Munyua | Munyua N Law Advocates</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.people-intro { max-width: 1200px; margin: 0 auto; padding: 56px 48px 0; }
+.people-intro p { font-size: 15.5px; color: var(--muted); line-height: 1.8; max-width: 640px; }
+.attorney-layout { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: start; }
+.attorney-col-left { position: sticky; top: 80px; }
+.attorney-col-left img { width: 100%; display: block; border-top: 4px solid var(--gold); }
+.attorney-meta-box { background: var(--teal); padding: 22px; }
+.am-name { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--gold); font-weight: 700; margin-bottom: 2px; }
+.am-title { font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.55); padding-bottom: 12px; margin-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.am-cred { font-size: 12.5px; color: rgba(255,255,255,.72); padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,.08); display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+.am-cred:last-child { border-bottom: none; }
+.am-cred::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+.attorney-contact-box { margin-top: 16px; background: var(--off-white); padding: 20px; border: 1px solid var(--border); }
+.acb-title { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin-bottom: 12px; }
+.acb-item { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+.acb-item a { color: var(--teal); text-decoration: underline; }
+
+/* bio right col */
+.bio-section { margin-bottom: 36px; }
+.bio-section h3 { font-family: 'Libre Baskerville', serif; font-size: 26px; font-weight: 400; color: var(--teal); margin-bottom: 18px; line-height: 1.25; }
+.bio-section p { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 14px; }
+.bio-section h4 { font-size: 10.5px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 6px; margin-top: 26px; }
+
+.focus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
+.focus-card { border-left: 3px solid var(--gold); padding: 14px 18px; background: var(--off-white); }
+.fc-title { font-size: 12.5px; font-weight: 700; color: var(--teal); letter-spacing: .04em; margin-bottom: 5px; }
+.fc-text { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+
+.philosophy-list { list-style: none; margin-top: 4px; }
+.philosophy-list li { padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; gap: 14px; font-size: 14.5px; color: var(--muted); line-height: 1.6; }
+.philosophy-list li::before { content: '›'; color: var(--gold); font-size: 20px; flex-shrink: 0; margin-top: -2px; }
+.philosophy-list li strong { color: var(--teal); }
+
+@media (max-width: 900px) {
+  .people-intro { padding: 40px 20px 0; }
+  .attorney-layout { grid-template-columns: 1fr; }
+  .attorney-col-left { position: static; max-width: 320px; }
+  .focus-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="page-hero">
+  <img class="page-hero-img" src="Esther.jpeg" alt="">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow"><a href="about.html">About</a> <span class="sep">›</span> People</div>
+    <h1>Esther N. <em>Munyua</em></h1>
+  </div>
+</div>
+
+<div class="sub-nav">
+  <div class="sub-nav-inner">
+    <a href="about.html">About the Firm</a>
+    <a href="people.html" class="active">Managing Partner</a>
+    <a href="expertise.html">Practice Areas</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<div class="people-intro">
+  <p>Founder and Managing Partner of Munyua N Law Advocates · Advocate of the High Court of Kenya · Strategic Legal Advisor specialising in business, regulation, and dispute resolution.</p>
+</div>
+
+<div class="page-body">
+  <div class="attorney-layout">
+
+    <!-- LEFT: Photo + meta -->
+    <div class="attorney-col-left">
+      <img src="Esther.jpeg" alt="Esther N. Munyua">
+      <div class="attorney-meta-box">
+        <div class="am-name">Esther N. Munyua</div>
+        <div class="am-title">Founder &amp; Managing Partner</div>
+        <div class="am-cred">LLB — Kenyatta University</div>
+        <div class="am-cred">Post-Graduate Diploma in Law — Kenya School of Law</div>
+        <div class="am-cred">Advocate of the High Court of Kenya</div>
+        <div class="am-cred">Member — Law Society of Kenya</div>
+        <div class="am-cred">6+ Years Post-Admission Experience</div>
+      </div>
+      <div class="attorney-contact-box">
+        <div class="acb-title">Get in Touch</div>
+        <div class="acb-item">📞 <a href="tel:+254725465278">+254 725 465 278</a></div>
+        <div class="acb-item">✉ <a href="mailto:munyuanlawadvocates@gmail.com">munyuanlawadvocates@gmail.com</a></div>
+        <div class="acb-item" style="margin-top:12px;">
+          <a href="contact.html" class="btn-primary" style="display:block;text-align:center;font-size:12px;">Book a Consultation</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Full bio -->
+    <div>
+      <div class="bio-section">
+        <h3>A Strategic Partner, Not Just External Counsel</h3>
+        <p>Esther N. Munyua is the Founder and Managing Partner of Munyua N Law Advocates and an Advocate of the High Court of Kenya. As a strategic legal advisor, Esther sits at the intersection of business, regulation, and dispute resolution — specialising in legal strategies that safeguard business growth and navigate complex regulatory landscapes.</p>
+        <p>With over six years of post-admission experience, Esther has built a reputation for combining technical legal precision with a deep understanding of business operations. Her work is anchored in a preventative legal philosophy — leveraging her extensive litigation experience to design structures, contracts, and compliance systems that withstand scrutiny and significantly reduce risk exposure.</p>
+      </div>
+
+      <div class="bio-section">
+        <h4>Core Practice Focus</h4>
+        <h3>Areas of Specialisation</h3>
+        <div class="focus-grid">
+          <div class="focus-card">
+            <div class="fc-title">Corporate &amp; Commercial Advisory</div>
+            <div class="fc-text">Advising corporates, startups, and growing businesses across all stages of their lifecycle — structuring transactions, negotiating commercial agreements, and strengthening corporate governance frameworks.</div>
+          </div>
+          <div class="focus-card">
+            <div class="fc-title">Employment &amp; Labour Law</div>
+            <div class="fc-text">End-to-end advisory on employment matters including workplace compliance, disciplinary processes, and restructuring. Successfully acting for both employers and employees in complex disputes.</div>
+          </div>
+          <div class="focus-card">
+            <div class="fc-title">Dispute Resolution &amp; Litigation</div>
+            <div class="fc-text">Extensive courtroom experience in high-stakes litigation informs every advisory engagement — ensuring clients' strategies are commercially viable and defensible in any forum.</div>
+          </div>
+          <div class="focus-card">
+            <div class="fc-title">Data Protection &amp; AI Governance</div>
+            <div class="fc-text">Advising organisations in technology-driven environments on DPA compliance, privacy frameworks, and emerging areas of AI governance and digital risk management.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bio-section">
+        <h4>Professional Philosophy</h4>
+        <h3>How Esther Works</h3>
+        <ul class="philosophy-list">
+          <li><span><strong>Preventative, Not Reactive.</strong> Designing systems and structures that proactively reduce disputes and regulatory exposure before they materialise.</span></li>
+          <li><span><strong>Litigation-Informed Advisory.</strong> Every recommendation is shaped by real courtroom experience — structuring solutions built to withstand tomorrow's legal challenges.</span></li>
+          <li><span><strong>Business-Centric Thinking.</strong> Every legal maneuver is aligned with the client's operational and commercial goals — speaking business as fluently as law.</span></li>
+          <li><span><strong>Transparent Partnership.</strong> Frequent correspondence and proactive communication ensure clients are consistently updated and informed at every stage of their matter.</span></li>
+        </ul>
+      </div>
+
+      <div class="bio-section">
+        <h4>Education &amp; Admissions</h4>
+        <h3>Qualifications</h3>
+        <p><strong>Bachelor of Law (LLB)</strong> — Kenyatta University</p>
+        <p><strong>Post-Graduate Diploma in Law</strong> — Kenya School of Law</p>
+        <p><strong>Advocate of the High Court of Kenya</strong></p>
+        <p><strong>Member</strong> — Law Society of Kenya</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Ready to work with <strong>Esther?</strong></h2>
+    <div class="cta-band-actions">
+      <a href="contact.html" class="btn-gold">Book a Consultation</a>
+      <a href="https://wa.me/254725465278" target="_blank" class="btn-ghost">WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="shared.js"></script>
+<script>renderNav('people');</script>
+</body>
+</html>

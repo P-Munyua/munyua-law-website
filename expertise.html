@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expertise | Munyua N Law Advocates</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.expertise-tagline { font-family: 'Libre Baskerville', serif; font-size: clamp(22px,2.8vw,34px); font-weight:400; color:var(--teal); text-align:center; font-style:italic; margin-bottom:40px; }
+.toggle-bar { display:flex; justify-content:flex-end; padding-bottom:12px; border-bottom:1px solid var(--border); margin-bottom:4px; }
+.toggle-all-btn { background:none; border:none; font-family:'Source Sans 3',sans-serif; font-size:13px; color:var(--teal); text-decoration:underline; text-underline-offset:2px; cursor:pointer; padding:0; }
+.toggle-all-btn:hover { color:var(--gold-dark); }
+.practices-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0 52px; padding-top:28px; }
+.practice-group { margin-bottom:24px; }
+.practice-group-header { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; cursor:pointer; padding-bottom:8px; border-bottom:1px solid var(--teal); user-select:none; }
+.practice-group-header:hover .pg-name { color:var(--gold-dark); }
+.pg-name { font-family:'Libre Baskerville',serif; font-size:14.5px; font-weight:700; color:var(--teal); line-height:1.3; transition:color .2s; }
+.pg-icon { color:var(--teal); font-size:20px; line-height:1; transition:transform .25s; flex-shrink:0; font-weight:300; margin-top:1px; }
+.practice-group.open .pg-icon { transform:rotate(45deg); }
+.practice-sub-list { display:none; padding:10px 0 4px; list-style:none; }
+.practice-group.open .practice-sub-list { display:block; }
+.practice-sub-list li a { display:block; font-size:13.5px; color:var(--teal); text-decoration:underline; text-underline-offset:2px; text-decoration-color:rgba(13,74,74,.35); padding:5px 0; transition:color .15s; }
+.practice-sub-list li a:hover { color:var(--gold-dark); text-decoration-color:var(--gold-dark); }
+@media (max-width:900px) { .practices-grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="page-hero">
+  <img class="page-hero-img" src="assets/esther.png" alt="">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Our Work</div>
+    <h1>Expertise &amp; <em>Practice Areas</em></h1>
+  </div>
+</div>
+
+<div class="sub-nav">
+  <div class="sub-nav-inner">
+    <a href="expertise.html" class="active">All Practice Areas</a>
+    <a href="practice-litigation.html">Litigation &amp; Disputes</a>
+    <a href="practice-corporate.html">Corporate &amp; Commercial</a>
+    <a href="practice-conveyancing.html">Conveyancing &amp; Land</a>
+    <a href="practice-employment.html">Employment</a>
+    <a href="practice-ip.html">Interlectual &amp; Property</a>
+    <a href="practice-data.html">Data &amp; Protection</a>
+    <a href="practice-technology.html">Tech &amp; Digital</a>
+    <a href="practice-procurement.html">Public &amp; Procurement</a>
+    <a href="practice-environment.html">Environment &amp; Land</a>
+  </div>
+</div>
+
+<div class="page-body">
+  <p class="expertise-tagline">The expertise you need, when and where you need it.</p>
+
+  <div class="toggle-bar">
+    <button class="toggle-all-btn" id="toggleAllBtn" onclick="toggleAll()">Expand all</button>
+  </div>
+
+  <div class="practices-grid">
+    <!-- COL 1 -->
+    <div>
+      <div class="practice-group" onclick="toggleGroup(this)">
+        <div class="practice-group-header"><span class="pg-name">Litigation &amp; Dispute Resolution</span><span class="pg-icon">+</span></div>
+        <ul class="practice-sub-list">
+          <li><a href="practice-litigation.html">Arbitration</a></li>
+          <li><a href="practice-litigation.html">Mediation</a></li>
+          <li><a href="practice-litigation.html">Commercial Litigation</a></li>
+          <li><a href="practice-litigation.html">Employment &amp; Labour Disputes</a></li>
+          <li><a href="practice-litigation.html">Family Law (Divorce, Children &amp; Succession)</a></li>
+          <li><a href="practice-litigation.html">Intellectual Property Disputes</a></li>
+          <li><a href="practice-litigation.html">Data Protection &amp; Privacy Disputes</a></li>
+          <li><a href="practice-litigation.html">Public Procurement Disputes</a></li>
+          <li><a href="practice-litigation.html">Environment &amp; Land Disputes</a></li>
+          <li><a href="practice-litigation.html">General Civil Litigation</a></li>
+        </ul>
+      </div>
+      <div class="practice-group" onclick="toggleGroup(this)">
+        <div class="practice-group-header"><span class="pg-name">Corporate &amp; Commercial Law</span><span class="pg-icon">+</span></div>
+        <ul class="practice-sub-list">
+          <li><a href="practice-corporate.html">Business Incorporation &amp; Structuring</a></li>
+          <li><a href="practice-corporate.html">Corporate Governance &amp; Company Secretarial</a></li>
+          <li><a href="practice-corporate.html">Commercial Contracts &amp; Agreements</a></li>
+          <li><a href="practice-corporate.html">Regulatory Compliance &amp; Legal Audits</a></li>
+          <li><a href="practice-corporate.html">Business Restructuring</a></li>
+          <li><a href="practice-corporate.html">General Corporate &amp; Commercial Advisory</a></li>
+        </ul>
+      </div>
+      <div class="practice-group" onclick="toggleGroup(this)">
+        <div class="practice-group-header"><span class="pg-name">Conveyancing &amp; Real Estate</span><span class="pg-icon">+</span></div>
+        <ul class="practice-sub-list">
+          <li><a href="practice-conveyancing.html">Sale and Purchase of Property</a></li>
+          <li><a href="practice-conveyancing.html">Drafting &amp; Review of Conveyancing Documents</a></li>
+          <li><a href="practice-conveyancing.html">Lease Preparation and Registration</a></li>
+          <li><a href="practice-conveyancing.html">Property Due Diligence</a></li>
+          <li><a href="practice-conveyancing.html">Sectional Properties &amp; Land Transactions</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- COL 2 -->
+    <div>
+      <div class="practice-group" onclick="toggleGroup(this)">
+        <div class="practice-group-header"><span class="pg-name">Employment &amp; Labour Relations</span><span class="pg-icon">+</span></div>
+        <ul class="practice-sub-list">
+          <li><a href="practice-employment.html">Employment Disputes (Prosecution &amp; Defence)</a></li>
+          <li><a href="practice-employment.html">Labour Law Compliance &amp; Advisory</a></li>
+          <li><a href="practice-employment.html">Employment Contracts &amp; HR Documentation</a></li>
+          <li><a href="practice-employment.html">Workplace Policies &amp; Employee Handbooks</a></li>
+          <li><a href="practice-employment.html">Collective Bargaining Agreements (CBAs)</a></li>
+          <li><a href="practice-employment.html">Training on Employment Laws</a></li>
+        </ul>
+      </div>
+      <div class="practice-group" onclick="toggleGroup(this)">
+        <div class="practice-group-header"><span class="pg-name">Intellectual Property</span><span class="pg-icon">+</span></div>
+        <ul class="practice-sub-list">
+          <li><a href="practice-ip.html">Trademark &amp; Industrial Design Registration</a></li>
+          <li><a href="practice-ip.html">IP Portfolio Management &amp; Renewals</a></li>
+          <li><a href="practice-ip.html">IP Enforcement &amp; Dispute Resolution</a></li>
+          <li><a href="practice-ip.html">Licensing, Assignment &amp; Commercialisation</a></li>
+          <li><a href="practice-ip.html">IP Advisory &amp; Legal Opinions</a></li>
+        </ul>
+      </div>
+      <div class="practice-group" onclick="toggleGroup(this)">
+        <div class="practice-group-header"><span class="pg-name">Data Protection &amp; Privacy</span><span class="pg-icon">+</span></div>
+        <ul class="practice-sub-list">
+          <li><a href="practice-data.html">Data Protection Compliance</a></li>
+          <li><a href="practice-data.html">Drafting Privacy Policies &amp; Frameworks</a></li>
+          <li><a href="practice-data.html">Data Protection Audits</a></li>
+          <li><a href="practice-data.html">Outsourced DPO Services</a></li>
+          <li><a href="practice-data.html">Data Protection Training</a></li>
+          <li><a href="practice-data.html">Regulatory Defence &amp; Representation</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- COL 3 -->
+    <div>
+      <div class="practice-group" onclick="toggleGroup(this)">
+        <div class="practice-group-header"><span class="pg-name">Technology &amp; Digital Transactions</span><span class="pg-icon">+</span></div>
+        <ul class="practice-sub-list">
+          <li><a href="practice-technology.html">Technology Agreements</a></li>
+          <li><a href="practice-technology.html">Software &amp; IT Contracts</a></li>
+          <li><a href="practice-technology.html">E-Commerce &amp; Digital Business Advisory</a></li>
+          <li><a href="practice-technology.html">Tech-Related Regulatory Compliance</a></li>
+          <li><a href="practice-technology.html">Startups &amp; Innovation Advisory</a></li>
+          <li><a href="practice-technology.html">AI Governance &amp; Digital Risk</a></li>
+        </ul>
+      </div>
+      <div class="practice-group" onclick="toggleGroup(this)">
+        <div class="practice-group-header"><span class="pg-name">Public Procurement</span><span class="pg-icon">+</span></div>
+        <ul class="practice-sub-list">
+          <li><a href="practice-procurement.html">Tender Advisory &amp; Documentation</a></li>
+          <li><a href="practice-procurement.html">Procurement Compliance</a></li>
+          <li><a href="practice-procurement.html">Bid Challenges &amp; Review Proceedings</a></li>
+          <li><a href="practice-procurement.html">Procurement Disputes</a></li>
+        </ul>
+      </div>
+      <div class="practice-group" onclick="toggleGroup(this)">
+        <div class="practice-group-header"><span class="pg-name">Environment &amp; Land Law</span><span class="pg-icon">+</span></div>
+        <ul class="practice-sub-list">
+          <li><a href="practice-environment.html">Environment &amp; Land Disputes</a></li>
+          <li><a href="practice-environment.html">Land Use &amp; Planning Advisory</a></li>
+          <li><a href="practice-environment.html">Environmental Compliance</a></li>
+          <li><a href="practice-environment.html">Land Rights &amp; Interests Advisory</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Not sure which practice area fits your matter? <strong>Talk to us.</strong></h2>
+    <div class="cta-band-actions">
+      <a href="contact.html" class="btn-gold">Book a Consultation</a>
+      <a href="https://wa.me/254725465278" target="_blank" class="btn-ghost">WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="shared.js"></script>
+<script>
+renderNav('expertise');
+let allExpanded = false;
+function toggleGroup(el) { el.classList.toggle('open'); checkState(); }
+function toggleAll() {
+  allExpanded = !allExpanded;
+  document.querySelectorAll('.practice-group').forEach(g => g.classList.toggle('open', allExpanded));
+  document.getElementById('toggleAllBtn').textContent = allExpanded ? 'Collapse all' : 'Expand all';
+}
+function checkState() {
+  const total = document.querySelectorAll('.practice-group').length;
+  const open  = document.querySelectorAll('.practice-group.open').length;
+  allExpanded = open === total;
+  document.getElementById('toggleAllBtn').textContent = allExpanded ? 'Collapse all' : 'Expand all';
+}
+</script>
+</body>
+</html>
