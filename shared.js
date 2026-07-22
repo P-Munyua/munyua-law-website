@@ -4,7 +4,7 @@ const SITE = {
   logo:  'logo2.png',
   photo: 'law.jpeg',
   phone: '+254725465278',
-  email: 'munyuanlawadvocates@gmail.com',
+  email: 'esthermunyua@munyuanlawadvocates.com',
 };
 
 function renderNav(activePage) {
@@ -38,7 +38,7 @@ function renderNav(activePage) {
     <nav class="main-nav">
       <a href="index.html" class="nav-logo">
         <img src="${SITE.logo}" alt="Munyua N Law Advocates">
-        <div class="nav-logo-text">Munyua N Law <span>Advocates</span></div>
+        
       </a>
       <ul class="nav-menu">
         <li><a href="about.html" ${activePage==='about'?'class="active"':''}>About <span class="chev">▾</span></a>
@@ -102,7 +102,7 @@ function renderNav(activePage) {
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 Munyua N Law Advocates. All rights reserved.</span>
+        <span>© 2026 Munyua N Law Advocates. All rights reserved.</span>
         <div class="footer-bottom-links">
           <a href="privacy.html">Privacy Policy</a>
           <a href="#">Disclaimer</a>
