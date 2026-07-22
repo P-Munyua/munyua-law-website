@@ -14,18 +14,79 @@
 .ftab.active { color: var(--teal); border-bottom-color: var(--gold); }
 /* Article cards */
 .articles-list { display: flex; flex-direction: column; gap: 0; }
-.article-card { padding: 28px 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr 120px; gap: 28px; align-items: start; cursor: pointer; transition: background .15s; }
+.article-card { padding: 28px 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr 120px; gap: 28px; align-items: start; transition: background .15s; position: relative; }
 .article-card:first-child { border-top: 1px solid var(--border); }
 .article-card:hover .ac-title { color: var(--gold-dark); }
 .ac-meta { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 8px; }
 .ac-title { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 400; color: var(--teal); line-height: 1.3; margin-bottom: 10px; transition: color .2s; }
 .ac-excerpt { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
 .ac-tag { display: inline-block; padding: 3px 10px; background: var(--light-gray); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
-.ac-image { width: 120px; height: 90px; background: var(--light-gray); border-top: 3px solid var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.ac-image-placeholder { font-size: 28px; opacity: .4; }
-.ac-read-more { font-size: 12.5px; color: var(--teal); text-decoration: underline; text-underline-offset: 2px; margin-top: 4px; }
-/* Featured article */
-.featured-article { background: var(--teal); padding: 36px; margin-bottom: 36px; }
+.ac-image { 
+  width: 120px; 
+  height: 90px; 
+  background: var(--light-gray); 
+  border-top: 3px solid var(--gold); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+.ac-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.ac-image-placeholder { font-size: 28px; opacity: .4; z-index: 1; }
+.ac-read-more { 
+  font-size: 12.5px; 
+  color: var(--teal); 
+  text-decoration: underline; 
+  text-underline-offset: 2px; 
+  margin-top: 4px; 
+  cursor: pointer;
+  display: inline-block;
+}
+.ac-read-more:hover { color: var(--gold-dark); }
+
+/* Edit button for owner mode */
+.edit-article-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--teal-dark);
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 4px;
+  margin-left: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+.edit-article-btn:hover { background: var(--gold-dark); color: white; }
+
+/* Featured article with image */
+.featured-article { background: var(--teal); padding: 36px; margin-bottom: 36px; position: relative; }
+.featured-article.has-image { padding-left: 200px; min-height: 200px; }
+.featured-image { 
+  position: absolute; 
+  left: 36px; 
+  top: 36px; 
+  width: 140px; 
+  height: 140px; 
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.featured-image img { width: 100%; height: 100%; object-fit: cover; }
+.featured-image-placeholder { font-size: 40px; opacity: 0.5; }
 .fa-eyebrow { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
 .fa-title { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 400; color: var(--white); line-height: 1.3; margin-bottom: 14px; }
 .fa-excerpt { font-size: 14px; color: rgba(255,255,255,.68); line-height: 1.75; margin-bottom: 20px; }
@@ -50,7 +111,142 @@
   .insights-sidebar { position: static; }
   .article-card { grid-template-columns: 1fr; }
   .ac-image { display: none; }
+  .featured-article.has-image { padding-left: 36px; }
+  .featured-image { display: none; }
 }
+
+/* Admin edit button */
+.admin-edit-trigger {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--gold);
+  color: var(--teal-dark);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  font-family: 'Source Sans 3', sans-serif;
+  display: none;
+}
+.admin-edit-trigger.visible { display: block; }
+.admin-edit-trigger:hover { background: var(--gold-dark); color: white; }
+
+.admin-bar {
+  background: var(--teal-dark);
+  color: white;
+  padding: 10px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  border-bottom: 2px solid var(--gold);
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.admin-btn { background: var(--gold); color: var(--teal-dark); border: none; padding: 6px 14px; font-weight: 700; border-radius: 4px; cursor: pointer; margin-left: 8px; }
+.admin-btn-outline { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 5px 12px; border-radius: 4px; cursor: pointer; margin-left: 8px; }
+
+/* Edit Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 1001;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: white;
+  max-width: 650px;
+  width: 90%;
+  padding: 28px;
+  border-radius: 8px;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+.modal-content input, .modal-content textarea, .modal-content select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+.modal-content label { font-weight: 600; font-size: 13px; margin-top: 10px; display: block; }
+
+/* Read More Modal */
+.read-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+.read-modal-content {
+  background: white;
+  max-width: 800px;
+  width: 90%;
+  margin: 40px auto;
+  border-radius: 12px;
+  position: relative;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+.read-modal-header {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 20px 24px;
+  border-bottom: 2px solid var(--gold);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.read-modal-header h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 24px;
+  color: var(--teal);
+  margin: 0;
+}
+.close-read-modal {
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  color: var(--muted);
+}
+.close-read-modal:hover { color: var(--gold-dark); }
+.read-modal-body { padding: 24px; }
+.read-modal-meta { font-size: 12px; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+.read-modal-image { width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px; margin: 16px 0; }
+.read-modal-content-text { font-size: 16px; line-height: 1.8; color: #2c3e50; }
+.read-modal-tags { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); }
+.read-modal-footer { background: var(--off-white); padding: 20px 24px; text-align: center; }
+
+.image-preview-area {
+  background: var(--light-gray);
+  padding: 15px;
+  margin: 10px 0;
+  text-align: center;
+  border-radius: 4px;
+}
+.image-preview-area img { max-width: 100%; max-height: 150px; margin-top: 10px; border-radius: 4px; }
+.image-url-input { display: flex; gap: 10px; align-items: center; }
+.image-url-input input { flex: 1; }
+.image-help { font-size: 11px; color: var(--muted); margin-top: 5px; }
 </style>
 </head>
 <body>
@@ -68,129 +264,35 @@
 <div class="sub-nav">
   <div class="sub-nav-inner">
     <a href="insights.html" class="active">All Insights</a>
-    <a href="insights.html">Articles</a>
-    <a href="insights.html">Legal Updates</a>
-    <a href="insights.html">Data Protection</a>
-    <a href="insights.html">Employment Law</a>
-    <a href="insights.html">Corporate</a>
+    
   </div>
 </div>
 
 <div class="page-body">
   <div class="insights-layout">
-    <!-- MAIN -->
     <div>
-      <!-- Featured -->
-      <div class="featured-article">
-        <div class="fa-eyebrow">Featured · Data Protection</div>
-        <div class="fa-title">What Kenya's Data Protection Act Means for Your Business in 2025</div>
-        <div class="fa-excerpt">The Office of the Data Protection Commissioner continues to intensify enforcement. Here is what every Kenyan business needs to know about compliance obligations, common pitfalls, and practical steps to reduce risk.</div>
-        <a href="contact.html" class="btn-gold" style="font-size:12px;">Read More →</a>
+      <div id="featuredArticleContainer"></div>
+
+      <div class="filter-tabs" id="filterTabs">
+        <button class="ftab active" data-cat="All">All</button>
+        <button class="ftab" data-cat="Data Protection">Data Protection</button>
+        <button class="ftab" data-cat="Employment Law">Employment Law</button>
+        <button class="ftab" data-cat="Corporate Law">Corporate Law</button>
+        <button class="ftab" data-cat="Real Estate">Real Estate</button>
+        <button class="ftab" data-cat="Technology">Technology</button>
       </div>
 
-      <!-- Filter tabs -->
-      <div class="filter-tabs">
-        <button class="ftab active" onclick="filterTab(this)">All</button>
-        <button class="ftab" onclick="filterTab(this)">Data Protection</button>
-        <button class="ftab" onclick="filterTab(this)">Employment Law</button>
-        <button class="ftab" onclick="filterTab(this)">Corporate Law</button>
-        <button class="ftab" onclick="filterTab(this)">Real Estate</button>
-        <button class="ftab" onclick="filterTab(this)">Technology</button>
-      </div>
-
-      <!-- Articles -->
-      <div class="articles-list">
-
-        <div class="article-card">
-          <div>
-            <div class="ac-meta">May 2025 · Employment Law</div>
-            <div class="ac-title">Unfair Termination in Kenya: What Employers Must Know Before Dismissing an Employee</div>
-            <div class="ac-excerpt">Kenyan employment law imposes strict procedural requirements on employers before a valid dismissal can occur. Failure to follow due process — regardless of the substantive reason — can expose employers to significant liability.</div>
-            <div><span class="ac-tag">Employment</span><span class="ac-tag">HR</span></div>
-            <div class="ac-read-more">Read More →</div>
-          </div>
-          <div class="ac-image"><div class="ac-image-placeholder">⚖️</div></div>
-        </div>
-
-        <div class="article-card">
-          <div>
-            <div class="ac-meta">April 2025 · Corporate Law</div>
-            <div class="ac-title">Five Legal Mistakes Kenyan Startups Make — And How to Avoid Them</div>
-            <div class="ac-excerpt">From improper incorporation structures to founder agreements that unravel at the worst possible moment, these are the most common legal errors we see in early-stage Kenyan businesses — and how to prevent them.</div>
-            <div><span class="ac-tag">Startups</span><span class="ac-tag">Corporate</span></div>
-            <div class="ac-read-more">Read More →</div>
-          </div>
-          <div class="ac-image"><div class="ac-image-placeholder">🏢</div></div>
-        </div>
-
-        <div class="article-card">
-          <div>
-            <div class="ac-meta">March 2025 · Real Estate</div>
-            <div class="ac-title">Property Due Diligence in Kenya: A Practical Guide for Buyers</div>
-            <div class="ac-excerpt">Purchasing property in Kenya involves multiple layers of verification — from land registry searches to investigating encumbrances and confirming legitimate ownership. This guide walks you through what a thorough due diligence process looks like.</div>
-            <div><span class="ac-tag">Real Estate</span><span class="ac-tag">Conveyancing</span></div>
-            <div class="ac-read-more">Read More →</div>
-          </div>
-          <div class="ac-image"><div class="ac-image-placeholder">🏘️</div></div>
-        </div>
-
-        <div class="article-card">
-          <div>
-            <div class="ac-meta">February 2025 · Technology</div>
-            <div class="ac-title">AI Governance in Kenya: What Businesses Need to Prepare For</div>
-            <div class="ac-excerpt">As artificial intelligence becomes embedded in business operations, the legal and regulatory landscape is evolving rapidly. We explore what Kenya's emerging AI governance framework means for businesses operating in the digital economy.</div>
-            <div><span class="ac-tag">AI</span><span class="ac-tag">Technology</span><span class="ac-tag">Compliance</span></div>
-            <div class="ac-read-more">Read More →</div>
-          </div>
-          <div class="ac-image"><div class="ac-image-placeholder">🤖</div></div>
-        </div>
-
-        <div class="article-card">
-          <div>
-            <div class="ac-meta">January 2025 · Data Protection</div>
-            <div class="ac-title">Outsourced DPO Services: Is Your Organisation Required to Appoint a Data Protection Officer?</div>
-            <div class="ac-excerpt">The Data Protection Act requires certain organisations to appoint a Data Protection Officer. We clarify who is obligated, what the DPO role entails, and why outsourcing this function may be the most practical solution for many businesses.</div>
-            <div><span class="ac-tag">Data Protection</span><span class="ac-tag">Compliance</span></div>
-            <div class="ac-read-more">Read More →</div>
-          </div>
-          <div class="ac-image"><div class="ac-image-placeholder">🔒</div></div>
-        </div>
-
-        <div class="article-card">
-          <div>
-            <div class="ac-meta">December 2024 · Procurement</div>
-            <div class="ac-title">Challenging a Procurement Decision: Your Rights Under Kenya's Public Procurement Law</div>
-            <div class="ac-excerpt">Unsuccessful tenderers often don't realise they have legal recourse when a procurement decision appears flawed. We outline the review and appeal mechanisms available and the strict timelines that apply.</div>
-            <div><span class="ac-tag">Procurement</span><span class="ac-tag">Disputes</span></div>
-            <div class="ac-read-more">Read More →</div>
-          </div>
-          <div class="ac-image"><div class="ac-image-placeholder">📋</div></div>
-        </div>
-
-      </div>
+      <div id="articlesListContainer" class="articles-list"></div>
     </div>
 
-    <!-- SIDEBAR -->
     <aside class="insights-sidebar">
-      <div class="sidebar-box">
-        <div class="sb-title">Topics</div>
-        <div class="sb-topic">Data Protection &amp; Privacy <span class="sb-count">4</span></div>
-        <div class="sb-topic">Employment Law <span class="sb-count">3</span></div>
-        <div class="sb-topic">Corporate &amp; Commercial <span class="sb-count">5</span></div>
-        <div class="sb-topic">Real Estate &amp; Conveyancing <span class="sb-count">2</span></div>
-        <div class="sb-topic">Technology &amp; AI <span class="sb-count">3</span></div>
-        <div class="sb-topic">Intellectual Property <span class="sb-count">2</span></div>
-        <div class="sb-topic">Public Procurement <span class="sb-count">2</span></div>
-        <div class="sb-topic">Environment &amp; Land <span class="sb-count">1</span></div>
-      </div>
-
+      <div class="sidebar-box" id="topicSidebar"></div>
       <div class="newsletter-box">
         <div class="nl-title">Legal Updates</div>
         <div class="nl-desc">Stay informed on Kenyan law developments. Subscribe to our insights newsletter.</div>
         <input class="nl-input" type="email" placeholder="Your email address">
         <button class="nl-btn">Subscribe</button>
       </div>
-
       <div class="sidebar-box" style="margin-top:0">
         <div class="sb-title">Need Legal Advice?</div>
         <p style="font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:16px;">Our team is ready to discuss your matter and provide clear, practical guidance.</p>
@@ -211,13 +313,381 @@
 </div>
 
 <div id="site-footer"></div>
+
+<!-- Read More Modal -->
+<div id="readModal" class="read-modal">
+  <div class="read-modal-content">
+    <div class="read-modal-header">
+      <h2 id="readModalTitle">Article Title</h2>
+      <button class="close-read-modal" onclick="closeReadModal()">&times;</button>
+    </div>
+    <div class="read-modal-body">
+      <div class="read-modal-meta" id="readModalMeta"></div>
+      <img id="readModalImage" class="read-modal-image" style="display: none;">
+      <div id="readModalContent" class="read-modal-content-text"></div>
+      <div class="read-modal-tags" id="readModalTags"></div>
+    </div>
+    <div class="read-modal-footer">
+      <a href="contact.html" class="btn-gold">📞 Contact Our Legal Team</a>
+    </div>
+  </div>
+</div>
+
+<!-- Admin Bar -->
+<div id="adminBar" class="admin-bar" style="display: none;">
+  <span>✍️ Owner Edit Mode Active</span>
+  <div>
+    <button id="newPostBtn" class="admin-btn">+ New Article</button>
+    <button id="logoutAdminBtn" class="admin-btn-outline">Exit Edit Mode</button>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <h3 id="modalTitle">Edit Article</h3>
+    <input type="text" id="editId" style="display:none;">
+    <label>Title</label>
+    <input type="text" id="editTitle" placeholder="Article title" required>
+    <label>Meta (e.g., "May 2025 · Employment Law")</label>
+    <input type="text" id="editMeta" placeholder="Month Year · Category">
+    <label>Article Image URL</label>
+    <div class="image-url-input">
+      <input type="text" id="editImageUrl" placeholder="https://example.com/image.jpg or paste image URL">
+      <button type="button" id="uploadImageBtn" class="admin-btn-outline">📁 Choose File</button>
+    </div>
+    <input type="file" id="imageFileInput" accept="image/*" style="display: none;">
+    <div class="image-preview-area">
+      <div>Image Preview:</div>
+      <img id="imagePreview" src="" style="max-width: 100%; max-height: 120px; display: none;">
+      <div id="noImageText" style="color: #999; font-size: 12px;">No image selected</div>
+    </div>
+    <label>Excerpt (shown in blog list)</label>
+    <textarea id="editExcerpt" rows="3" placeholder="Short preview of the article..."></textarea>
+    <label>Full Content (shown when clicking Read More)</label>
+    <textarea id="editFullContent" rows="8" placeholder="Write the complete article content here..."></textarea>
+    <label>Tags (comma separated)</label>
+    <input type="text" id="editTags" placeholder="e.g., Employment, HR, Compliance">
+    <label>Category</label>
+    <select id="editCategory">
+      <option>Data Protection</option>
+      <option>Employment Law</option>
+      <option>Corporate Law</option>
+      <option>Real Estate</option>
+      <option>Technology</option>
+    </select>
+    <label>Featured Article?</label>
+    <select id="editFeatured">
+      <option value="false">No</option>
+      <option value="true">Yes (shows at top)</option>
+    </select>
+    <div style="margin-top:20px; display: flex; gap:12px;">
+      <button id="saveArticleBtn" class="admin-btn">Save Article</button>
+      <button id="closeModalBtn" class="admin-btn-outline">Cancel</button>
+      <button id="deleteArticleBtn" class="admin-btn-outline" style="background:#a11; color:white;">Delete Article</button>
+    </div>
+  </div>
+</div>
+
+<button id="adminTriggerBtn" class="admin-edit-trigger">🔐 Admin Login</button>
+
 <script src="shared.js"></script>
 <script>
-renderNav('insights');
-function filterTab(btn) {
-  document.querySelectorAll('.ftab').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+// ============================================================
+// BLOG SYSTEM WITH WORKING EDIT BUTTONS
+// Secret URL: ?munyua-admin | Password: admin123
+// ============================================================
+
+let blogPosts = [
+  { id: "p1", title: "What Kenya's Data Protection Act Means for Your Business in 2025", meta: "January 2025 · Data Protection", excerpt: "The Office of the Data Protection Commissioner continues to intensify enforcement. Here is what every Kenyan business needs to know about compliance obligations, common pitfalls, and practical steps to reduce risk.", fullContent: "The Office of the Data Protection Commissioner (ODPC) has ramped up enforcement actions in 2025, with fines exceeding KES 10 million issued to non-compliant organizations. This article breaks down the key requirements: registration of data controllers, conducting Data Protection Impact Assessments (DPIAs), appointing Data Protection Officers where required, and responding to data subject access requests. We also cover common pitfalls such as inadequate consent mechanisms and cross-border data transfer violations. Practical steps include conducting a data audit, updating privacy policies, training staff, and implementing data breach response procedures. Contact us for a compliance health check.", tags: ["Data Protection","Compliance"], category: "Data Protection", featured: true, imageUrl: "" },
+  { id: "p2", title: "Unfair Termination in Kenya: What Employers Must Know Before Dismissing an Employee", meta: "May 2025 · Employment Law", excerpt: "Kenyan employment law imposes strict procedural requirements on employers before a valid dismissal can occur. Failure to follow due process — regardless of the substantive reason — can expose employers to significant liability.", fullContent: "Under Kenya's Employment Act, 2007, a termination is unfair if the employer fails to prove (a) a valid reason relating to the employee's capacity, conduct, or operational requirements, and (b) that the employee was heard before dismissal. Courts have awarded up to 12 months' gross salary as compensation for unfair termination. This article outlines the procedural steps: issuing a show-cause letter, conducting a disciplinary hearing, allowing representation, issuing a termination letter with reasons, and paying final dues. We also discuss constructive dismissal and redundancy procedures.", tags: ["Employment","HR"], category: "Employment Law", featured: false, imageUrl: "" },
+  { id: "p3", title: "Five Legal Mistakes Kenyan Startups Make — And How to Avoid Them", meta: "April 2025 · Corporate Law", excerpt: "From improper incorporation structures to founder agreements that unravel at the worst possible moment, these are the most common legal errors we see in early-stage Kenyan businesses.", fullContent: "Startups often prioritize product development over legal foundations. Mistake #1: Using the wrong business structure (sole proprietorship vs limited company). Mistake #2: No founder vesting schedule — if a co-founder leaves early, they keep their shares. Mistake #3: Ignoring intellectual property protection for brand and technology. Mistake #4: Poorly drafted contracts with suppliers and customers. Mistake #5: Non-compliance with KRA and employment laws. This article provides actionable fixes, including incorporating as a private limited company, signing founder agreements with 4-year vesting, registering trademarks, using standardized contracts, and staying tax-compliant.", tags: ["Startups","Corporate"], category: "Corporate Law", featured: false, imageUrl: "" }
+];
+
+let isOwner = false;
+let currentFilter = "All";
+let currentEditId = null;
+
+function checkSecretURL() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const secretKey = urlParams.get('munyua-admin');
+  if (secretKey !== null) document.getElementById("adminTriggerBtn").classList.add("visible");
 }
+
+function loadFromStorage() {
+  const stored = localStorage.getItem("munyua_blog_posts");
+  if (stored) blogPosts = JSON.parse(stored);
+}
+function savePosts() { localStorage.setItem("munyua_blog_posts", JSON.stringify(blogPosts)); }
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/[&<>]/g, function(m) {
+    if (m === '&') return '&amp;';
+    if (m === '<') return '&lt;';
+    if (m === '>') return '&gt;';
+    return m;
+  }).replace(/\n/g, '<br>');
+}
+
+function getArticleImage(post) {
+  if (post.imageUrl && post.imageUrl.trim() !== "") {
+    return `<img src="${escapeHtml(post.imageUrl)}" alt="${escapeHtml(post.title)}">`;
+  } else {
+    return `<div class="ac-image-placeholder">📄</div>`;
+  }
+}
+
+function openEditModal(id) {
+  if (!isOwner) return;
+  const post = blogPosts.find(p => p.id === id);
+  if (post) {
+    currentEditId = id;
+    document.getElementById("editTitle").value = post.title;
+    document.getElementById("editMeta").value = post.meta;
+    document.getElementById("editExcerpt").value = post.excerpt;
+    document.getElementById("editFullContent").value = post.fullContent || "";
+    document.getElementById("editTags").value = post.tags.join(", ");
+    document.getElementById("editCategory").value = post.category;
+    document.getElementById("editFeatured").value = post.featured ? "true" : "false";
+    document.getElementById("editImageUrl").value = post.imageUrl || "";
+    updateImagePreview(post.imageUrl);
+    document.getElementById("modalTitle").innerText = "Edit Article";
+    document.getElementById("editModal").style.display = "flex";
+  }
+}
+
+function openNewArticleModal() {
+  if (!isOwner) return;
+  currentEditId = null;
+  document.getElementById("editTitle").value = "";
+  document.getElementById("editMeta").value = "";
+  document.getElementById("editExcerpt").value = "";
+  document.getElementById("editFullContent").value = "";
+  document.getElementById("editTags").value = "";
+  document.getElementById("editCategory").value = "Data Protection";
+  document.getElementById("editFeatured").value = "false";
+  document.getElementById("editImageUrl").value = "";
+  updateImagePreview("");
+  document.getElementById("modalTitle").innerText = "Create New Article";
+  document.getElementById("editModal").style.display = "flex";
+}
+
+function updateImagePreview(url) {
+  const previewImg = document.getElementById("imagePreview");
+  const noImageText = document.getElementById("noImageText");
+  if (url && url.trim() !== "") {
+    previewImg.src = url;
+    previewImg.style.display = "block";
+    noImageText.style.display = "none";
+  } else {
+    previewImg.style.display = "none";
+    noImageText.style.display = "block";
+  }
+}
+
+function saveCurrentArticle() {
+  const title = document.getElementById("editTitle").value.trim();
+  const meta = document.getElementById("editMeta").value.trim();
+  const excerpt = document.getElementById("editExcerpt").value.trim();
+  const fullContent = document.getElementById("editFullContent").value.trim();
+  const tagsRaw = document.getElementById("editTags").value;
+  const tags = tagsRaw.split(",").map(t => t.trim()).filter(t => t);
+  const category = document.getElementById("editCategory").value;
+  const featured = document.getElementById("editFeatured").value === "true";
+  const imageUrl = document.getElementById("editImageUrl").value.trim();
+  
+  if (!title || !excerpt) return alert("Title and excerpt are required");
+  
+  if (currentEditId) {
+    const idx = blogPosts.findIndex(p => p.id === currentEditId);
+    if (idx !== -1) {
+      blogPosts[idx] = { ...blogPosts[idx], title, meta, excerpt, fullContent, tags, category, featured, imageUrl };
+    }
+  } else {
+    const newId = "p" + Date.now();
+    blogPosts.push({ id: newId, title, meta, excerpt, fullContent, tags, category, featured, imageUrl });
+  }
+  
+  if (featured) {
+    blogPosts.forEach(p => { if (p.id !== (currentEditId || blogPosts[blogPosts.length-1].id)) p.featured = false; });
+  }
+  
+  savePosts();
+  closeModal();
+  renderAll();
+}
+
+function deleteCurrentArticle() {
+  if (currentEditId && confirm("Delete this article permanently?")) {
+    blogPosts = blogPosts.filter(p => p.id !== currentEditId);
+    savePosts();
+    closeModal();
+    renderAll();
+  }
+}
+
+function closeModal() { document.getElementById("editModal").style.display = "none"; currentEditId = null; }
+
+function openReadModal(postId) {
+  if (isOwner) return;
+  const post = blogPosts.find(p => p.id === postId);
+  if (!post) return;
+  document.getElementById("readModalTitle").innerText = post.title;
+  document.getElementById("readModalMeta").innerHTML = post.meta;
+  const contentHtml = post.fullContent || post.excerpt || "Full content coming soon.";
+  document.getElementById("readModalContent").innerHTML = escapeHtml(contentHtml);
+  const tagsHtml = post.tags.map(t => `<span class="ac-tag">${escapeHtml(t)}</span>`).join('');
+  document.getElementById("readModalTags").innerHTML = tagsHtml;
+  const modalImage = document.getElementById("readModalImage");
+  if (post.imageUrl && post.imageUrl.trim() !== "") {
+    modalImage.src = post.imageUrl;
+    modalImage.style.display = "block";
+  } else {
+    modalImage.style.display = "none";
+  }
+  document.getElementById("readModal").style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+function closeReadModal() {
+  document.getElementById("readModal").style.display = "none";
+  document.body.style.overflow = "auto";
+}
+
+function renderFeatured() {
+  const featured = blogPosts.find(p => p.featured === true) || blogPosts[0];
+  const container = document.getElementById("featuredArticleContainer");
+  if (container && featured) {
+    const hasImage = featured.imageUrl && featured.imageUrl.trim() !== "";
+    const imageHtml = hasImage ? 
+      `<div class="featured-image"><img src="${escapeHtml(featured.imageUrl)}" alt="${escapeHtml(featured.title)}"></div>` :
+      `<div class="featured-image"><div class="featured-image-placeholder">📄</div></div>`;
+    
+    container.innerHTML = `
+      <div class="featured-article ${hasImage ? 'has-image' : ''}">
+        ${imageHtml}
+        <div class="fa-eyebrow">Featured · ${escapeHtml(featured.category)}</div>
+        <div class="fa-title">${escapeHtml(featured.title)}</div>
+        <div class="fa-excerpt">${escapeHtml(featured.excerpt)}</div>
+        <button onclick="openReadModal('${featured.id}')" class="btn-gold" style="font-size:12px; border:none; cursor:pointer;">Read More →</button>
+        ${isOwner ? `<button onclick="openEditModal('${featured.id}')" class="edit-article-btn" style="margin-left:12px;">✏️ Edit</button>` : ''}
+      </div>
+    `;
+  }
+}
+
+function renderArticles() {
+  let filtered = currentFilter === "All" ? blogPosts : blogPosts.filter(p => p.category === currentFilter);
+  const container = document.getElementById("articlesListContainer");
+  if (!container) return;
+  
+  container.innerHTML = filtered.map(post => `
+    <div class="article-card">
+      <div>
+        <div class="ac-meta">${escapeHtml(post.meta)}</div>
+        <div class="ac-title">${escapeHtml(post.title)}</div>
+        <div class="ac-excerpt">${escapeHtml(post.excerpt.substring(0, 160))}${post.excerpt.length > 160 ? '…' : ''}</div>
+        <div>${post.tags.map(t => `<span class="ac-tag">${escapeHtml(t)}</span>`).join('')}</div>
+        <div>
+          <span class="ac-read-more" onclick="openReadModal('${post.id}')">Read More →</span>
+          ${isOwner ? `<span class="edit-article-btn" onclick="openEditModal('${post.id}')">✏️ Edit</span>` : ''}
+        </div>
+      </div>
+      <div class="ac-image">
+        ${getArticleImage(post)}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderSidebarTopics() {
+  const counts = {};
+  blogPosts.forEach(p => { counts[p.category] = (counts[p.category] || 0) + 1; });
+  const container = document.getElementById("topicSidebar");
+  if (container) {
+    container.innerHTML = `<div class="sb-title">Topics</div>` + Object.entries(counts).map(([cat, cnt]) => `
+      <div class="sb-topic" onclick="setFilter('${cat.replace(/'/g, "\\'")}')">${escapeHtml(cat)}<span class="sb-count">${cnt}</span></div>
+    `).join('');
+  }
+}
+
+function setFilter(cat) {
+  currentFilter = cat;
+  document.querySelectorAll('.ftab').forEach(btn => {
+    if (btn.getAttribute('data-cat') === cat) btn.classList.add('active');
+    else btn.classList.remove('active');
+  });
+  renderArticles();
+}
+
+function renderAll() {
+  renderFeatured();
+  renderArticles();
+  renderSidebarTopics();
+}
+
+function showAdminLogin() {
+  const pwd = prompt("🔐 Admin Access - Enter password to manage blog content:");
+  if (pwd === "admin123") {
+    isOwner = true;
+    document.getElementById("adminBar").style.display = "flex";
+    renderAll();
+    alert("Admin mode active.\n✓ Click 'Edit' button on any article\n✓ Click '+ New Article' to create\n✓ All changes save automatically");
+  } else if (pwd !== null) alert("Incorrect password.");
+}
+
+function logoutOwner() {
+  isOwner = false;
+  document.getElementById("adminBar").style.display = "none";
+  renderAll();
+}
+
+function setupImageUpload() {
+  const uploadBtn = document.getElementById("uploadImageBtn");
+  const fileInput = document.getElementById("imageFileInput");
+  const imageUrlInput = document.getElementById("editImageUrl");
+  uploadBtn.onclick = () => fileInput.click();
+  fileInput.onchange = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        imageUrlInput.value = event.target.result;
+        updateImagePreview(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  imageUrlInput.oninput = (e) => updateImagePreview(e.target.value);
+}
+
+loadFromStorage();
+renderAll();
+setupImageUpload();
+checkSecretURL();
+
+document.getElementById("adminTriggerBtn").onclick = showAdminLogin;
+document.getElementById("logoutAdminBtn").onclick = logoutOwner;
+document.getElementById("newPostBtn").onclick = openNewArticleModal;
+document.getElementById("saveArticleBtn").onclick = saveCurrentArticle;
+document.getElementById("closeModalBtn").onclick = closeModal;
+document.getElementById("deleteArticleBtn").onclick = deleteCurrentArticle;
+
+document.querySelectorAll(".ftab").forEach(btn => {
+  btn.onclick = () => {
+    currentFilter = btn.getAttribute("data-cat");
+    document.querySelectorAll(".ftab").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    renderArticles();
+  };
+});
+
+window.openReadModal = openReadModal;
+window.closeReadModal = closeReadModal;
+window.openEditModal = openEditModal;
+window.setFilter = setFilter;
+renderNav('insights');
 </script>
 </body>
 </html>
